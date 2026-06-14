@@ -117,6 +117,53 @@ Agregar comentario
 
 </button>
 
+
+
+   <div id="formularioComentario"
+style="
+display:none;
+margin-top:15px;
+">
+
+<input
+id="nombreComentario"
+placeholder="Tu nombre"
+style="
+width:100%;
+padding:10px;
+margin-bottom:10px;
+border:1px solid #ccc;
+border-radius:8px;
+">
+
+<textarea
+id="textoComentario"
+placeholder="Escribe tu comentario..."
+style="
+width:100%;
+padding:10px;
+height:100px;
+border:1px solid #ccc;
+border-radius:8px;
+"></textarea>
+
+<button
+id="btnPublicar"
+onclick="publicarComentario()"
+style="
+margin-top:10px;
+padding:10px;
+background:#16a34a;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+">
+Publicar comentario
+</button>
+
+   </div>
+
    
 </div>
 
@@ -137,7 +184,9 @@ import {
   getDoc,
   collection,
   getDocs,
-  addDoc
+  addDoc,
+  query,
+  orderBy
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
@@ -210,9 +259,12 @@ async function cargarComentarios(){
   contenedor.innerHTML = "";
 
   const consulta =
-      await getDocs(
-          collection(db,"comentarios_reflexion")
-      );
+    await getDocs(
+      query(
+        collection(db,"comentarios_reflexion"),
+        orderBy("fecha","asc")
+      )
+    );
 
   consulta.forEach((docu)=>{
 
@@ -308,8 +360,128 @@ async function agregarComentario(){
 /* ======================================
    INICIAR APP
 ====================================== */
+
+/* ======================================
+   MOSTRAR FORMULARIO
+====================================== */
+
+function agregarComentario(){
+
+  document
+    .getElementById("formularioComentario")
+    .style.display = "block";
+
+}
+
+
+/* ======================================
+   PUBLICAR COMENTARIO
+====================================== */
+
+async function publicarComentario(){
+
+  let usuarioId =
+      localStorage.getItem("lumina_usuario");
+
+  let nombre = "";
+
+  if(!usuarioId){
+
+      nombre =
+        document.getElementById(
+          "nombreComentario"
+        ).value.trim();
+
+      if(!nombre){
+
+          alert("Escribe tu nombre");
+
+          return;
+      }
+
+      const nuevoUsuario =
+        await addDoc(
+          collection(db,"usuarios"),
+          {
+            nombre,
+            fecha: Date.now()
+          }
+        );
+
+      usuarioId = nuevoUsuario.id;
+
+      localStorage.setItem(
+        "lumina_usuario",
+        usuarioId
+      );
+
+  }else{
+
+      const usuarioDoc =
+        await getDoc(
+          doc(db,"usuarios",usuarioId)
+        );
+
+      nombre =
+        usuarioDoc.data().nombre;
+
+      document
+      .getElementById(
+        "nombreComentario"
+      )
+      .value = nombre;
+
+  }
+
+  const comentario =
+    document
+    .getElementById(
+      "textoComentario"
+    )
+    .value
+    .trim();
+
+  if(!comentario){
+
+      alert(
+        "Escribe un comentario"
+      );
+
+      return;
+  }
+
+  await addDoc(
+      collection(
+        db,
+        "comentarios_reflexion"
+      ),
+      {
+        usuarioId,
+        nombre,
+        comentario,
+        fecha: Date.now()
+      }
+  );
+
+  document
+  .getElementById(
+    "textoComentario"
+  )
+  .value = "";
+
+  cargarComentarios();
+
+  alert(
+    "Comentario publicado ✅"
+  );
+
+}
+   
 window.agregarComentario =
     agregarComentario;
+
+window.publicarComentario =
+    publicarComentario;
    
 cargarReflexion();
 
