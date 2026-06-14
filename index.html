@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LUMINA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#F5F7FA;
+    color:#1f2937;
+    padding-bottom:90px;
+}
+
+header{
+    background:linear-gradient(135deg,#1E3A8A,#2563EB);
+    color:white;
+    padding:30px 20px;
+    border-bottom-left-radius:25px;
+    border-bottom-right-radius:25px;
+}
+
+header h1{
+    font-size:32px;
+}
+
+header p{
+    margin-top:8px;
+    opacity:.9;
+}
+
+.container{
+    padding:20px;
+}
+
+.card{
+    background:white;
+    border-radius:20px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.card h2{
+    margin-bottom:15px;
+}
+
+.versiculo{
+    font-size:18px;
+    font-weight:600;
+    color:#1E3A8A;
+}
+
+.pregunta{
+    margin-top:15px;
+    background:#EEF2FF;
+    padding:15px;
+    border-radius:12px;
+}
+
+.comentarios{
+    margin-top:20px;
+}
+
+.comentario{
+    background:#F9FAFB;
+    padding:12px;
+    border-radius:12px;
+    margin-top:10px;
+}
+
+.comentario strong{
+    color:#2563EB;
+}
+
+.menu{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    background:white;
+    display:flex;
+    justify-content:space-around;
+    padding:15px;
+    box-shadow:0 -2px 10px rgba(0,0,0,.1);
+}
+
+.menu button{
+    border:none;
+    background:none;
+    font-size:14px;
+    cursor:pointer;
+}
+
+.menu span{
+    display:block;
+    font-size:22px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <h1>✨ LUMINA</h1>
+    <p>Crecer juntos en la Palabra</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>📖 Reflexión del día</h2>
+
+        <div class="versiculo">
+            Juan 15:5
+        </div>
+
+        <p style="margin-top:10px;">
+            "Yo soy la vid, vosotros los pámpanos..."
+        </p>
+
+        <div class="pregunta">
+            ❓ ¿Qué significa para ti permanecer en Cristo?
+        </div>
+
+        <div class="comentarios">
+
+            <h3>💬 Comentarios</h3>
+
+            <div class="comentario">
+                <strong>Carlos</strong><br>
+                Permanecer en Cristo significa depender de Él todos los días.
+            </div>
+
+            <div class="comentario">
+                <strong>Gaby</strong><br>
+                Significa buscar a Dios constantemente.
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="menu">
+
+    <button>
+        <span>🏠</span>
+        Inicio
+    </button>
+
+    <button>
+        <span>📚</span>
+        Escuela
+    </button>
+
+    <button>
+        <span>🙏</span>
+        Oración
+    </button>
+
+    <button>
+        <span>👤</span>
+        Perfil
+    </button>
+
+</div>
+
+</body>
+</html>
