@@ -3,97 +3,177 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LUMINA v0.2</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<title>LUMINA</title>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Inter,sans-serif;background:#F5F7FA;color:#1f2937;padding-bottom:90px}
-header{background:linear-gradient(135deg,#1E3A8A,#2563EB);color:#fff;padding:30px 20px;border-radius:0 0 25px 25px}
-header h1{font-size:32px}
-header p{margin-top:8px;opacity:.95}
-.container{padding:20px}
-.card{background:#fff;border-radius:20px;padding:20px;margin-bottom:20px;box-shadow:0 4px 12px rgba(0,0,0,.08)}
-.card h2{margin-bottom:15px}
-.versiculo{font-size:18px;font-weight:600;color:#1E3A8A}
-.pregunta{margin-top:15px;background:#EEF2FF;padding:15px;border-radius:12px}
-.comentario{background:#F9FAFB;padding:12px;border-radius:12px;margin-top:10px}
-button{border:none;border-radius:10px;padding:10px 14px;cursor:pointer}
-.btn{background:#2563EB;color:white}
-.menu{position:fixed;bottom:0;left:0;right:0;background:#fff;display:flex;justify-content:space-around;padding:12px;box-shadow:0 -2px 10px rgba(0,0,0,.1)}
-.menu button{background:none;padding:6px}
-.menu .activo{color:#2563EB;font-weight:bold}
-.menu span{display:block;font-size:22px}
-.seccion{display:none}
-.seccion.activa{display:block}
+
+/* ======================================
+   ESTILOS GENERALES
+====================================== */
+
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    background:#f5f7fa;
+    color:#333;
+}
+
+header{
+    background:linear-gradient(135deg,#1E3A8A,#2563EB);
+    color:white;
+    padding:30px;
+    text-align:center;
+}
+
+.container{
+    padding:20px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+}
+
+h2{
+    margin-top:0;
+}
+
+.versiculo{
+    font-weight:bold;
+    color:#1E3A8A;
+    font-size:20px;
+}
+
+.pregunta{
+    margin-top:15px;
+    background:#eef2ff;
+    padding:15px;
+    border-radius:10px;
+}
+
 </style>
+
 </head>
+
 <body>
+
 <header>
+
 <h1>✨ LUMINA</h1>
-<p>"Lámpara es a mis pies tu palabra, y lumbrera a mi camino."<br><strong>Salmo 119:105</strong></p>
+
+<p>
+"Lámpara es a mis pies tu palabra,
+y lumbrera a mi camino."
+<br>
+Salmo 119:105
+</p>
+
 </header>
 
 <div class="container">
 
-<div id="inicio" class="seccion activa">
 <div class="card">
-<h2>📖 Reflexión del día</h2>
-<div class="versiculo">Juan 15:5</div>
-<p style="margin-top:10px">"Yo soy la vid, vosotros los pámpanos..."</p>
-<div class="pregunta">❓ ¿Qué significa para ti permanecer en Cristo?</div>
-<div style="margin-top:15px"><button class="btn">Agregar comentario</button></div>
-<div class="comentario"><strong>Carlos</strong><br>Permanecer en Cristo significa depender de Él.</div>
-<div class="comentario"><strong>Gaby</strong><br>Buscar a Dios constantemente.</div>
-</div>
+
+<h2>📖 Reflexión del Día</h2>
+
+<div id="versiculo" class="versiculo">
+Cargando...
 </div>
 
-<div id="escuela" class="seccion">
-<div class="card">
-<h2>📚 Escuela Dominical</h2>
-<div class="comentario"><strong>El Perdón</strong><br>Estudio disponible próximamente.</div>
-<div class="comentario"><strong>La Fe</strong><br>Estudio disponible próximamente.</div>
-</div>
-</div>
+<p id="texto">
+Cargando reflexión...
+</p>
 
-<div id="oracion" class="seccion">
-<div class="card">
-<h2>🙏 Peticiones de Oración</h2>
-<div class="comentario"><strong>Carlos</strong><br>Oren por mi familia.</div>
-<div class="comentario"><strong>Loyda</strong><br>Oren por mi salud.</div>
-<button class="btn" style="margin-top:15px">Nueva petición</button>
-</div>
-</div>
-
-<div id="perfil" class="seccion">
-<div class="card">
-<h2>👤 Perfil</h2>
-<p><strong>Nombre:</strong> No definido</p>
-<p style="margin-top:10px"><strong>Rol:</strong> Participante</p>
-<button class="btn" style="margin-top:15px" onclick="entrarLider()">🔑 Entrar como líder</button>
-</div>
+<div id="pregunta" class="pregunta">
+Cargando pregunta...
 </div>
 
 </div>
 
-<div class="menu">
-<button id="btn-inicio" class="activo" onclick="mostrar('inicio',this)"><span>🏠</span>Inicio</button>
-<button onclick="mostrar('escuela',this)"><span>📚</span>Escuela</button>
-<button onclick="mostrar('oracion',this)"><span>🙏</span>Oración</button>
-<button onclick="mostrar('perfil',this)"><span>👤</span>Perfil</button>
 </div>
 
-<script>
-function mostrar(id,btn){
- document.querySelectorAll('.seccion').forEach(s=>s.classList.remove('activa'));
- document.getElementById(id).classList.add('activa');
- document.querySelectorAll('.menu button').forEach(b=>b.classList.remove('activo'));
- btn.classList.add('activo');
+<script type="module">
+
+/* ======================================
+   IMPORTAR FIREBASE
+====================================== */
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getFirestore,
+  doc,
+  getDoc
 }
-function entrarLider(){
- const c=prompt('Ingrese código de líder');
- if(c==='LUMINA2026'){alert('Acceso concedido 👑');}
- else if(c){alert('Código incorrecto');}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+/* ======================================
+   CONFIGURACIÓN FIREBASE
+====================================== */
+
+const firebaseConfig = {
+
+  apiKey: "AIzaSyB_jJZdMdVIhy9OT8R9Z8XsbRTNCJpgtsY",
+
+  authDomain: "lumina-82c5e.firebaseapp.com",
+
+  projectId: "lumina-82c5e",
+
+  storageBucket: "lumina-82c5e.firebasestorage.app",
+
+  messagingSenderId: "941054906075",
+
+  appId: "1:941054906075:web:bd4e4741a9c3c87a5a86fe"
+};
+
+/* ======================================
+   INICIALIZAR FIREBASE
+====================================== */
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+/* ======================================
+   CARGAR REFLEXIÓN ACTUAL
+====================================== */
+
+async function cargarReflexion(){
+
+  const referencia =
+      doc(db,"reflexion_actual","actual");
+
+  const documento =
+      await getDoc(referencia);
+
+  if(documento.exists()){
+
+      const datos = documento.data();
+
+      document.getElementById("versiculo")
+      .textContent = datos.versiculo;
+
+      document.getElementById("texto")
+      .textContent = datos.texto;
+
+      document.getElementById("pregunta")
+      .textContent = "❓ " + datos.pregunta;
+
+  }
+
 }
+
+/* ======================================
+   INICIAR APP
+====================================== */
+
+cargarReflexion();
+
 </script>
+
 </body>
 </html>
