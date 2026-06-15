@@ -76,22 +76,10 @@ window.proximamente = function(){
 
 window.irUltimoComentario = function(){
 
-    const comentarios =
-    document.getElementById(
-        "listaComentariosCompleta"
-    );
-
-    if(
-        comentarios &&
-        comentarios.lastElementChild
-    ){
-
-        comentarios.lastElementChild
-        .scrollIntoView({
-            behavior:"smooth"
-        });
-
-    }
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth"
+    });
 
     document
     .getElementById(
