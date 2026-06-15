@@ -2,12 +2,17 @@
    NAVEGACIÓN ENTRE PANTALLAS
 ====================================== */
 
-window.verComentarios = function(){
-
-  /* alert("verComentarios fue ejecutado");
+    window.verComentarios = function(){
+       
+   /* alert("verComentarios fue ejecutado");
    alert("Entré a comentarios");*/
+       
     document
     .querySelector(".card")
+    .style.display = "none";
+
+    document
+    .querySelector("header")
     .style.display = "none";
 
     document
@@ -23,7 +28,6 @@ window.verComentarios = function(){
     .style.display = "flex";
 
 };
-
 window.volverInicio = function(){
 
     document
