@@ -14,8 +14,13 @@ window.verComentarios = function(){
     )
     .style.display = "block";
 
-};
+    document
+    .getElementById(
+        "barraComentario"
+    )
+    .style.display = "flex";
 
+};
 
 window.volverInicio = function(){
 
@@ -26,6 +31,12 @@ window.volverInicio = function(){
     document
     .getElementById(
         "pantallaComentarios"
+    )
+    .style.display = "none";
+
+    document
+    .getElementById(
+        "barraComentario"
     )
     .style.display = "none";
 
