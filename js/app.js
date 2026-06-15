@@ -4,6 +4,7 @@
 
 window.verComentarios = function(){
 
+   alert("Entré a comentarios");
     document
     .querySelector(".card")
     .style.display = "none";
