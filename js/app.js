@@ -43,8 +43,3 @@ window.volverInicio = function(){
 };
 
 
-window.verComentarios =
-    verComentarios;
-
-window.volverInicio =
-    volverInicio;
