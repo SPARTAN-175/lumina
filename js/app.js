@@ -44,4 +44,20 @@ window.volverInicio = function(){
 
 };
 
+/* ======================================
+   MENÚ INFERIOR
+====================================== */
 
+window.irInicio = function(){
+
+    volverInicio();
+
+};
+
+window.proximamente = function(){
+
+    alert(
+      "🚧 Próximamente disponible"
+    );
+
+};
