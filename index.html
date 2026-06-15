@@ -299,7 +299,10 @@ import {
   getDoc,
   collection,
   getDocs,
-  addDoc
+  addDoc,
+  query,
+  orderBy,
+  onSnapshot
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
@@ -346,9 +349,20 @@ async function cargarComentarios(){
   listaCompleta.innerHTML = "";
 
   const consulta =
-  await getDocs(
-    collection(db,"comentarios_reflexion")
-  );
+await getDocs(
+
+  query(
+    collection(
+      db,
+      "comentarios_reflexion"
+    ),
+    orderBy(
+      "fecha",
+      "asc"
+    )
+  )
+
+);
 
 let totalComentarios =
     consulta.size;
