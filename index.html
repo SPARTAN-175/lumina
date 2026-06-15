@@ -362,6 +362,8 @@ async function cargarComentarios(){
 
 );
 
+let cantidadAnterior = 0;
+   
 onSnapshot(
   consulta,
   (snapshot)=>{
@@ -442,7 +444,23 @@ color:#666;
           listaCompleta.innerHTML +=
               tarjeta;
 
-      });
+      }
+                   if(
+    cantidadAnterior > 0 &&
+    snapshot.size > cantidadAnterior
+){
+
+    document
+    .getElementById(
+        "nuevoComentario"
+    )
+    .style.display = "block";
+
+}
+
+cantidadAnterior =
+snapshot.size;   
+                      );
 
   }
 
@@ -794,6 +812,26 @@ Perfil
 
 </div>
 
+
+<div
+id="nuevoComentario"
+onclick="irUltimoComentario()"
+style="
+display:none;
+position:fixed;
+bottom:140px;
+right:20px;
+background:#2563EB;
+color:white;
+padding:10px 15px;
+border-radius:25px;
+cursor:pointer;
+box-shadow:0 2px 10px rgba(0,0,0,.2);
+z-index:9999;
+font-size:14px;
+">
+💬 Nuevo comentario
+</div>
    
 </body>
 </html>
