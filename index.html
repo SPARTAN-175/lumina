@@ -125,6 +125,18 @@ display:none;
 margin-top:15px;
 ">
 
+<div
+id="usuarioActual"
+style="
+display:none;
+margin-bottom:10px;
+padding:10px;
+background:#eef2ff;
+border-radius:8px;
+font-weight:bold;
+">
+</div>
+
 <input
 id="nombreComentario"
 placeholder="Tu nombre"
@@ -273,7 +285,14 @@ async function cargarComentarios(){
         border-radius:8px;
       ">
         <strong>${datos.nombre}</strong><br>
-        ${datos.comentario}
+
+<small style="color:gray;">
+${new Date(datos.fecha).toLocaleString()}
+</small>
+
+<br><br>
+
+${datos.comentario}
       </div>
       `;
 
@@ -296,6 +315,17 @@ function agregarComentario(){
   document
     .getElementById("formularioComentario")
     .style.display = "block";
+
+  const usuarioId =
+      localStorage.getItem("lumina_usuario");
+
+  if(usuarioId){
+
+      document
+      .getElementById("nombreComentario")
+      .style.display = "none";
+
+  }
 
 }
 
@@ -351,6 +381,15 @@ async function publicarComentario(){
       nombre =
         usuarioDoc.data().nombre;
 
+     document
+.getElementById("usuarioActual")
+.style.display = "block";
+
+document
+.getElementById("usuarioActual")
+.textContent =
+"Comentando como: " + nombre;
+
       document
       .getElementById(
         "nombreComentario"
@@ -394,6 +433,12 @@ async function publicarComentario(){
     "textoComentario"
   )
   .value = "";
+
+   document
+.getElementById(
+  "formularioComentario"
+)
+.style.display = "none";
 
   cargarComentarios();
 
