@@ -35,6 +35,10 @@ window.volverInicio = function(){
     .style.display = "block";
 
     document
+    .querySelector("header")
+    .style.display = "block";
+
+    document
     .getElementById(
         "pantallaComentarios"
     )
