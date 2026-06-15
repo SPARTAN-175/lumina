@@ -90,7 +90,7 @@ border-radius:10px;
 <div
 id="zonaComentarios"
 style="
-padding-bottom:100px;
+padding-bottom:220px;
 ">
 
 <div id="listaComentariosCompleta">
@@ -365,23 +365,54 @@ document
     const datos = docu.data();
 
     const tarjeta = `
-    <div style="
-    background:#f5f5f5;
-    padding:10px;
-    margin-top:10px;
-    border-radius:8px;
-    ">
-      <strong>${datos.nombre}</strong><br>
 
-      <small style="color:gray;">
-      ${new Date(datos.fecha).toLocaleString()}
-      </small>
+<div style="
+background:white;
+padding:12px;
+margin-top:10px;
+border-radius:12px;
+box-shadow:0 1px 5px rgba(0,0,0,.08);
+">
 
-      <br><br>
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+">
 
-      ${datos.comentario}
-    </div>
-    `;
+<strong>
+${datos.nombre}
+</strong>
+
+<small style="
+color:gray;
+font-size:12px;
+">
+${new Date(datos.fecha).toLocaleTimeString()}
+</small>
+
+</div>
+
+<div style="
+margin-top:8px;
+line-height:1.4;
+">
+${datos.comentario}
+</div>
+
+<div style="
+margin-top:10px;
+font-size:14px;
+color:#666;
+">
+
+🙏 0 &nbsp;&nbsp; ❤️ 0
+
+</div>
+
+</div>
+
+`;
 
     contenedor.innerHTML += tarjeta;
 
