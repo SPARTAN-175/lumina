@@ -75,6 +75,69 @@ Salmo 119:105
 
 <div class="container">
 
+   <!-- ======================================
+     PANTALLA COMENTARIOS
+====================================== -->
+
+<div
+id="pantallaComentarios"
+style="
+display:none;
+">
+
+<div
+id="cabeceraComentarios"
+style="
+position:sticky;
+top:0;
+background:white;
+padding:15px;
+border-radius:15px;
+box-shadow:0 2px 10px rgba(0,0,0,.1);
+margin-bottom:15px;
+z-index:100;
+">
+
+<button
+onclick="volverInicio()"
+style="
+background:#2563EB;
+color:white;
+border:none;
+padding:10px;
+border-radius:8px;
+cursor:pointer;
+margin-bottom:10px;
+">
+← Volver
+</button>
+
+<div
+id="versiculoFijo"
+style="
+font-weight:bold;
+color:#1E3A8A;
+font-size:18px;
+">
+</div>
+
+<div
+id="preguntaFija"
+style="
+margin-top:10px;
+background:#eef2ff;
+padding:10px;
+border-radius:10px;
+">
+</div>
+
+</div>
+
+<div id="listaComentariosCompleta">
+</div>
+
+</div>
+
 <div class="card">
 
 <h2>📖 Reflexión del Día</h2>
@@ -97,6 +160,7 @@ Cargando pregunta...
 
 <button
 id="btnVerComentarios"
+onclick="verComentarios()"
 style="
 width:100%;
 padding:12px;
@@ -268,6 +332,12 @@ async function cargarReflexion(){
       document.getElementById("pregunta")
       .textContent = "❓ " + datos.pregunta;
 
+     document.getElementById( "versiculoFijo")
+     .textContent = datos.versiculo;
+
+     document.getElementById( "preguntaFija")
+     .textContent = "❓ " + datos.pregunta;
+
   }
 
 }
@@ -283,6 +353,10 @@ async function cargarComentarios(){
       document.getElementById("comentarios");
 
   contenedor.innerHTML = "";
+
+   const listaCompleta = document.getElementById( "listaComentariosCompleta");
+
+  listaCompleta.innerHTML = "";
 
   const consulta =
   await getDocs(
@@ -304,6 +378,26 @@ document
       const datos = docu.data();
 
       contenedor.innerHTML += `
+
+      listaCompleta.innerHTML += `
+      <div style="
+        background:#f5f5f5;
+        padding:10px;
+        margin-top:10px;
+        border-radius:8px;
+      ">
+        <strong>${datos.nombre}</strong><br>
+
+        <small style="color:gray;">
+        ${new Date(datos.fecha).toLocaleString()}
+        </small>
+
+        <br><br>
+
+        ${datos.comentario}
+      </div>
+`;
+      
       <div style="
         background:#f5f5f5;
         padding:10px;
@@ -352,6 +446,43 @@ function agregarComentario(){
       .style.display = "none";
 
   }
+
+}
+
+/* ======================================
+   ABRIR COMENTARIOS
+====================================== */
+
+function verComentarios(){
+
+  document
+  .querySelector(".card")
+  .style.display = "none";
+
+  document
+  .getElementById(
+    "pantallaComentarios"
+  )
+  .style.display = "block";
+
+}
+
+
+/* ======================================
+   VOLVER AL INICIO
+====================================== */
+
+function volverInicio(){
+
+  document
+  .querySelector(".card")
+  .style.display = "block";
+
+  document
+  .getElementById(
+    "pantallaComentarios"
+  )
+  .style.display = "none";
 
 }
 
@@ -483,7 +614,13 @@ window.agregarComentario =
 
 window.publicarComentario =
     publicarComentario;
-   
+
+window.verComentarios =
+    verComentarios;
+
+window.volverInicio =
+    volverInicio;
+
 cargarReflexion();
 
 cargarComentarios();
