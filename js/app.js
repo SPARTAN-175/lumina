@@ -81,10 +81,17 @@ window.irUltimoComentario = function(){
         "listaComentariosCompleta"
     );
 
-    comentarios.lastElementChild
-    ?.scrollIntoView({
-        behavior:"smooth"
-    });
+    if(
+        comentarios &&
+        comentarios.lastElementChild
+    ){
+
+        comentarios.lastElementChild
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+    }
 
     document
     .getElementById(
