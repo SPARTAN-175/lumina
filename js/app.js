@@ -30,3 +30,10 @@ window.volverInicio = function(){
     .style.display = "none";
 
 };
+
+
+window.verComentarios =
+    verComentarios;
+
+window.volverInicio =
+    volverInicio;
