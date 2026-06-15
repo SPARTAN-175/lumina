@@ -184,9 +184,7 @@ import {
   getDoc,
   collection,
   getDocs,
-  addDoc,
-  query,
-  orderBy
+  addDoc
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
@@ -259,12 +257,9 @@ async function cargarComentarios(){
   contenedor.innerHTML = "";
 
   const consulta =
-    await getDocs(
-      query(
-        collection(db,"comentarios_reflexion"),
-        orderBy("fecha","asc")
-      )
-    );
+  await getDocs(
+    collection(db,"comentarios_reflexion")
+  );
 
   consulta.forEach((docu)=>{
 
@@ -290,71 +285,6 @@ async function cargarComentarios(){
    AGREGAR COMENTARIO
 ====================================== */
 
-async function agregarComentario(){
-
-  // Buscar si ya existe un identificador local
-  let usuarioId = localStorage.getItem("lumina_usuario");
-
-  let nombre = "";
-
-  // Si es la primera vez
-  if(!usuarioId){
-
-      nombre = prompt("¿Cómo te llamas?");
-
-      if(!nombre) return;
-
-      // Crear usuario en Firebase
-      const nuevoUsuario = await addDoc(
-          collection(db,"usuarios"),
-          {
-            nombre: nombre,
-            fecha: Date.now()
-          }
-      );
-
-      usuarioId = nuevoUsuario.id;
-
-      localStorage.setItem(
-          "lumina_usuario",
-          usuarioId
-      );
-
-  }else{
-
-      // Buscar nombre del usuario
-      const usuarioDoc =
-          await getDoc(
-            doc(db,"usuarios",usuarioId)
-          );
-
-      if(usuarioDoc.exists()){
-          nombre = usuarioDoc.data().nombre;
-      }
-
-  }
-
-  // Pedir comentario
-  const comentario =
-      prompt("Escribe tu comentario");
-
-  if(!comentario) return;
-
-  // Guardar comentario
-  await addDoc(
-      collection(db,"comentarios_reflexion"),
-      {
-        usuarioId: usuarioId,
-        nombre: nombre,
-        comentario: comentario,
-        fecha: Date.now()
-      }
-  );
-
-  // Recargar comentarios
-  cargarComentarios();
-
-   }
    
 
 /* ======================================
