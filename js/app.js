@@ -73,3 +73,23 @@ window.proximamente = function(){
     );
 
 };
+
+window.irUltimoComentario = function(){
+
+    const comentarios =
+    document.getElementById(
+        "listaComentariosCompleta"
+    );
+
+    comentarios.lastElementChild
+    ?.scrollIntoView({
+        behavior:"smooth"
+    });
+
+    document
+    .getElementById(
+        "nuevoComentario"
+    )
+    .style.display = "none";
+
+};
