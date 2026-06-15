@@ -93,9 +93,25 @@ Cargando pregunta...
 
 <hr style="margin:20px 0;">
 
-<h3>💬 Comentarios</h3>
+<h3>💬 Comunidad</h3>
 
-<div id="comentarios">
+<button
+id="btnVerComentarios"
+style="
+width:100%;
+padding:12px;
+background:#eef2ff;
+border:none;
+border-radius:10px;
+cursor:pointer;
+margin-bottom:15px;
+">
+Ver comentarios (0)
+</button>
+
+<div
+id="comentarios"
+style="display:none;">
 
 <p>Cargando comentarios...</p>
 
@@ -273,6 +289,16 @@ async function cargarComentarios(){
     collection(db,"comentarios_reflexion")
   );
 
+let totalComentarios =
+    consulta.size;
+
+document
+.getElementById(
+  "btnVerComentarios"
+)
+.textContent =
+`Ver comentarios (${totalComentarios})`;
+   
   consulta.forEach((docu)=>{
 
       const datos = docu.data();
