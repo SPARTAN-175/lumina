@@ -34,9 +34,13 @@ window.volverInicio = function(){
     .querySelector(".card")
     .style.display = "block";
 
+   console.log(
+  document.querySelector("header")
+);
+   
     document
     .querySelector("header")
-    .style.display = "";
+    .style.display = "block";
 
     document
     .getElementById(
