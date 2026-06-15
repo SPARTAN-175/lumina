@@ -378,23 +378,7 @@ document
     const datos = docu.data();
 
     const tarjeta = `
-    <div style="
-    background:#f5f5f5;
-    padding:10px;
-    margin-top:10px;
-    border-radius:8px;
-    ">
-      <strong>${datos.nombre}</strong><br>
-
-      <small style="color:gray;">
-      ${new Date(datos.fecha).toLocaleString()}
-      </small>
-
-      <br><br>
-
-      ${datos.comentario}
-    </div>
-    `;
+  
 
     contenedor.innerHTML += tarjeta;
 
