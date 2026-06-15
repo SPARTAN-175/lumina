@@ -388,44 +388,6 @@ function agregarComentario(){
 }
 
 /* ======================================
-   ABRIR COMENTARIOS
-====================================== */
-
-function verComentarios(){
-
-  document
-  .querySelector(".card")
-  .style.display = "none";
-
-  document
-  .getElementById(
-    "pantallaComentarios"
-  )
-  .style.display = "block";
-
-}
-
-
-/* ======================================
-   VOLVER AL INICIO
-====================================== */
-
-function volverInicio(){
-
-  document
-  .querySelector(".card")
-  .style.display = "block";
-
-  document
-  .getElementById(
-    "pantallaComentarios"
-  )
-  .style.display = "none";
-
-}
-
-
-/* ======================================
    PUBLICAR COMENTARIO
 ====================================== */
 
@@ -553,11 +515,6 @@ window.agregarComentario =
 window.publicarComentario =
     publicarComentario;
 
-window.verComentarios =
-    verComentarios;
-
-window.volverInicio =
-    volverInicio;
 
 cargarReflexion();
 
