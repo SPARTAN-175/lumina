@@ -36,7 +36,7 @@ window.volverInicio = function(){
 
     document
     .querySelector("header")
-    .style.display = "block";
+    .style.display = "";
 
     document
     .getElementById(
