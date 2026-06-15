@@ -4,6 +4,7 @@
 
 window.verComentarios = function(){
 
+   alert("verComentarios fue ejecutado");
    alert("Entré a comentarios");
     document
     .querySelector(".card")
