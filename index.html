@@ -302,7 +302,9 @@ import {
   addDoc,
   query,
   orderBy,
-  onSnapshot
+  onSnapshot,
+  updateDoc,
+  increment
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
@@ -718,6 +720,47 @@ async function enviarComentarioRapido(){
 
 }
 
+
+
+
+window.reaccionAmen = async function(comentarioId){
+
+    await updateDoc(
+
+        doc(
+            db,
+            "comentarios_reflexion",
+            comentarioId
+        ),
+
+        {
+            amen: increment(1)
+        }
+
+    );
+
+};
+
+
+window.reaccionEdifico = async function(comentarioId){
+
+    await updateDoc(
+
+        doc(
+            db,
+            "comentarios_reflexion",
+            comentarioId
+        ),
+
+        {
+            edifico: increment(1)
+        }
+
+    );
+
+};
+   
+   
 /* ======================================
    INICIAR APP
 ====================================== */
