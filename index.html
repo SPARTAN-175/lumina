@@ -306,7 +306,9 @@ import {
   orderBy,
   onSnapshot,
   updateDoc,
-  increment
+  increment,
+  setDoc,
+  deleteDoc
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
@@ -814,6 +816,101 @@ window.toqueLogo = function(){
 };
 
 
+window.publicarNuevaReflexion =
+async function(){
+
+    const versiculo =
+    document.getElementById(
+        "nuevoVersiculo"
+    ).value.trim();
+
+    const texto =
+    document.getElementById(
+        "nuevoTexto"
+    ).value.trim();
+
+    const pregunta =
+    document.getElementById(
+        "nuevaPregunta"
+    ).value.trim();
+
+    if(
+        !versiculo ||
+        !texto ||
+        !pregunta
+    ){
+        alert(
+          "Completa todos los campos"
+        );
+        return;
+    }
+
+    await setDoc(
+
+        doc(
+            db,
+            "reflexion_actual",
+            "actual"
+        ),
+
+        {
+            versiculo,
+            texto,
+            pregunta
+        }
+
+    );
+
+    const comentarios =
+    await getDocs(
+        collection(
+            db,
+            "comentarios_reflexion"
+        )
+    );
+
+    for(
+        const comentario
+        of comentarios.docs
+    ){
+
+        await deleteDoc(
+            comentario.ref
+        );
+
+    }
+
+    document
+    .getElementById(
+        "nuevoVersiculo"
+    )
+    .value = "";
+
+    document
+    .getElementById(
+        "nuevoTexto"
+    )
+    .value = "";
+
+    document
+    .getElementById(
+        "nuevaPregunta"
+    )
+    .value = "";
+
+    document
+    .getElementById(
+        "panelAdmin"
+    )
+    .style.display = "none";
+
+    alert(
+      "Nueva reflexión publicada ✅"
+    );
+
+};
+
+   
 /* ======================================
    INICIAR APP
 ====================================== */
