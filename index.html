@@ -430,7 +430,7 @@ word-wrap:break-word;
 overflow-wrap:break-word;
 white-space:pre-wrap;
 background:${esMio ? "#dbeafe" : "white"};
-padding:12px;
+padding:8px 10px;
 border-radius:12px;
 box-shadow:0 1px 5px rgba(0,0,0,.08);
 ">
@@ -441,13 +441,13 @@ justify-content:space-between;
 align-items:center;
 ">
 
-<strong>
+<strong style="font-size:13px;">
 ${datos.nombre}
 </strong>
 
 <small style="
 color:gray;
-font-size:12px;
+font-size:10px;
 ">
 ${new Date(
   datos.fecha
@@ -457,16 +457,16 @@ ${new Date(
 </div>
 
 <div style="
-margin-top:8px;
-line-height:1.4;
+margin-top:4px;
+line-height:1.3;
 ">
 ${datos.comentario}
 </div>
 
 <div style="
-margin-top:10px;
+margin-top:6px;
 display:flex;
-gap:10px;
+gap:6px;
 ">
 
 <button
