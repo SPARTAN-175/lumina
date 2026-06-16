@@ -385,6 +385,14 @@ onSnapshot(
 
           const datos =
               docu.data();
+         const comentarioId =
+             docu.id;
+
+         const amen =
+             datos.amen || 0;
+
+         const edifico =
+             datos.edifico || 0;
 
           const tarjeta = `
 
@@ -431,6 +439,7 @@ gap:10px;
 ">
 
 <button
+onclick="reaccionAmen('${comentarioId}')"
 style="
 border:none;
 background:#eef2ff;
@@ -438,10 +447,11 @@ padding:6px 12px;
 border-radius:20px;
 cursor:pointer;
 ">
-🙏 0
+🙏 ${amen}
 </button>
 
 <button
+onclick="reaccionEdifico('${comentarioId}')"
 style="
 border:none;
 background:#fee2e2;
@@ -449,7 +459,7 @@ padding:6px 12px;
 border-radius:20px;
 cursor:pointer;
 ">
-❤️ 0
+❤️ ${edifico}
 </button>
 
 </div>
