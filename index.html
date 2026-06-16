@@ -512,39 +512,66 @@ snapshot.size;
    REFLEXIÓN DEL DÍA
 ====================================== */
 
-window.cargarReflexion = async function(){
+window.cargarReflexion = function(){
 
     const referencia =
-        doc(db,"reflexion_actual","actual");
+    doc(
+        db,
+        "reflexion_actual",
+        "actual"
+    );
 
-    const documento =
-        await getDoc(referencia);
+    onSnapshot(
+        referencia,
+        (documento)=>{
 
-    if(documento.exists()){
+            if(documento.exists()){
 
-        const datos = documento.data();
+                const datos =
+                documento.data();
 
-        document.getElementById("versiculo")
-        .textContent = datos.versiculo;
+                document
+                .getElementById(
+                    "versiculo"
+                )
+                .textContent =
+                datos.versiculo;
 
-        document.getElementById("texto")
-        .textContent = datos.texto;
+                document
+                .getElementById(
+                    "texto"
+                )
+                .textContent =
+                datos.texto;
 
-        document.getElementById("pregunta")
-        .textContent =
-        "❓ " + datos.pregunta;
+                document
+                .getElementById(
+                    "pregunta"
+                )
+                .textContent =
+                "❓ " +
+                datos.pregunta;
 
-        document.getElementById(
-            "versiculoFijo"
-        ).textContent =
-        datos.versiculo;
+                document
+                .getElementById(
+                    "versiculoFijo"
+                )
+                .textContent =
+                datos.versiculo;
 
-        document.getElementById(
-            "preguntaFija"
-        ).textContent =
-        "❓ " + datos.pregunta;
+                document
+                .getElementById(
+                    "preguntaFija"
+                )
+                .textContent =
+                "❓ " +
+                datos.pregunta;
 
-    }
+            }
+
+        }
+
+    );
 
 };
    
