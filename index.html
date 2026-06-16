@@ -397,18 +397,44 @@ onSnapshot(
          const comentarioId =
              docu.id;
 
+
+      const miUsuario =
+localStorage.getItem(
+    "lumina_usuario"
+);
+
+const esMio =
+datos.usuarioId === miUsuario;
+
+
+   
          const amen =
              datos.amen || 0;
 
          const edifico =
              datos.edifico || 0;
 
-          const tarjeta = `
+
+         const miUsuario =
+localStorage.getItem(
+    "lumina_usuario"
+);
+
+const esMio =
+datos.usuarioId === miUsuario;
+         
+         const tarjeta = `
 
 <div style="
-background:white;
-padding:12px;
+display:flex;
+justify-content:${esMio ? "flex-end" : "flex-start"};
 margin-top:10px;
+">
+
+<div style="
+max-width:80%;
+background:${esMio ? "#dbeafe" : "white"};
+padding:12px;
 border-radius:12px;
 box-shadow:0 1px 5px rgba(0,0,0,.08);
 ">
@@ -470,6 +496,8 @@ cursor:pointer;
 ">
 ❤️ ${edifico}
 </button>
+
+</div>
 
 </div>
 
