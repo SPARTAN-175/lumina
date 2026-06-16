@@ -426,11 +426,31 @@ ${datos.comentario}
 
 <div style="
 margin-top:10px;
-font-size:14px;
-color:#666;
+display:flex;
+gap:10px;
 ">
 
-🙏 0 &nbsp;&nbsp; ❤️ 0
+<button
+style="
+border:none;
+background:#eef2ff;
+padding:6px 12px;
+border-radius:20px;
+cursor:pointer;
+">
+🙏 0
+</button>
+
+<button
+style="
+border:none;
+background:#fee2e2;
+padding:6px 12px;
+border-radius:20px;
+cursor:pointer;
+">
+❤️ 0
+</button>
 
 </div>
 
@@ -622,17 +642,20 @@ document
   }
 
   await addDoc(
-      collection(
-        db,
-        "comentarios_reflexion"
-      ),
-      {
-        usuarioId,
-        nombre,
-        comentario,
-        fecha: Date.now()
-      }
-  );
+  collection(
+    db,
+    "comentarios_reflexion"
+  ),
+  {
+    usuarioId,
+    nombre,
+    comentario,
+    fecha: Date.now(),
+
+    amen: 0,
+    edifico: 0
+  }
+);
 
   document
   .getElementById(
