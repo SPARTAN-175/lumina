@@ -16,7 +16,9 @@
 
 <header>
 
-<h1>✨ LUMINA</h1>
+<h1 onclick="toqueLogo()">
+✨ LUMINA
+</h1>
 
 <p>
 "Lámpara es a mis pies tu palabra,
@@ -788,8 +790,30 @@ window.reaccionEdifico = async function(comentarioId){
     );
 
 };
-   
-   
+
+
+let contadorToques = 0;
+
+
+window.toqueLogo = function(){
+
+    contadorToques++;
+
+    if(contadorToques >= 5){
+
+        document
+        .getElementById(
+            "panelAdmin"
+        )
+        .style.display = "block";
+
+        contadorToques = 0;
+
+    }
+
+};
+
+
 /* ======================================
    INICIAR APP
 ====================================== */
@@ -867,6 +891,72 @@ z-index:9999;
 font-size:14px;
 ">
 💬 Nuevo comentario
+</div>
+
+
+
+<div
+id="panelAdmin"
+style="
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 0 20px rgba(0,0,0,.2);
+width:90%;
+max-width:500px;
+z-index:99999;
+">
+
+<h3>⚙️ Nueva Reflexión</h3>
+
+<input
+id="nuevoVersiculo"
+placeholder="Versículo"
+style="
+width:100%;
+padding:10px;
+margin-bottom:10px;
+">
+
+<textarea
+id="nuevoTexto"
+placeholder="Reflexión"
+style="
+width:100%;
+height:120px;
+margin-bottom:10px;
+">
+</textarea>
+
+<textarea
+id="nuevaPregunta"
+placeholder="Pregunta"
+style="
+width:100%;
+height:80px;
+margin-bottom:10px;
+">
+</textarea>
+
+<button
+onclick="publicarNuevaReflexion()"
+style="
+width:100%;
+padding:12px;
+background:#16a34a;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+">
+Publicar reflexión
+</button>
+
 </div>
    
 </body>
