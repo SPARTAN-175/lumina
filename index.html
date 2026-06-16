@@ -904,9 +904,21 @@ async function(){
     )
     .style.display = "none";
 
-    alert(
-      "Nueva reflexión publicada ✅"
-    );
+    document
+.getElementById(
+    "mensajeExito"
+)
+.style.display = "block";
+
+setTimeout(()=>{
+
+    document
+    .getElementById(
+        "mensajeExito"
+    )
+    .style.display = "none";
+
+},3000);
 
 };
 
@@ -1054,6 +1066,27 @@ cursor:pointer;
 Publicar reflexión
 </button>
 
+</div>
+
+
+
+
+<div
+id="mensajeExito"
+style="
+display:none;
+position:fixed;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+background:#16a34a;
+color:white;
+padding:12px 20px;
+border-radius:10px;
+z-index:999999;
+font-weight:bold;
+">
+✅ Reflexión publicada con éxito
 </div>
    
 </body>
