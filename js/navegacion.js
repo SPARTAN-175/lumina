@@ -1,18 +1,18 @@
 /* ======================================
    NAVEGACIÓN ENTRE PANTALLAS
 ====================================== */
+window.verComentarios = function(){
 
-    window.verComentarios = function(){
-       
-   /* alert("verComentarios fue ejecutado");
-   alert("Entré a comentarios");*/
-       
     document
     .querySelector(".card")
     .style.display = "none";
 
     document
     .querySelector("header")
+    .style.display = "none";
+
+    document
+    .getElementById("menuInferior")
     .style.display = "none";
 
     document
@@ -28,19 +28,20 @@
     .style.display = "flex";
 
 };
+    
 window.volverInicio = function(){
 
     document
     .querySelector(".card")
     .style.display = "block";
 
-   console.log(
-  document.querySelector("header")
-);
-   
     document
     .querySelector("header")
     .style.display = "block";
+
+    document
+    .getElementById("menuInferior")
+    .style.display = "flex";
 
     document
     .getElementById(
