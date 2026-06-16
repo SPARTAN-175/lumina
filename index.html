@@ -126,12 +126,14 @@ align-items:center;
 <textarea
 id="textoComentarioRapido"
 placeholder="Escribe tu opinión..."
+oninput="autoExpandir(this)"
 style="
 flex:1;
-height:40px;
+min-height:40px;
+max-height:120px;
 padding:10px;
 border:1px solid #ccc;
-border-radius:10px;
+border-radius:24px;
 resize:none;
 ">
 </textarea>
@@ -949,6 +951,18 @@ setTimeout(()=>{
 },3000);
 
 };
+
+
+
+window.autoExpandir = function(textarea){
+
+    textarea.style.height = "auto";
+    textarea.style.height =
+    textarea.scrollHeight + "px";
+
+};
+
+
 
    
 /* ======================================
