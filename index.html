@@ -725,6 +725,20 @@ async function enviarComentarioRapido(){
 
 window.reaccionAmen = async function(comentarioId){
 
+    const clave =
+    "amen_" + comentarioId;
+
+    if(
+        localStorage.getItem(clave)
+    ){
+
+        alert(
+          "Ya reaccionaste con 🙏"
+        );
+
+        return;
+    }
+
     await updateDoc(
 
         doc(
@@ -739,10 +753,29 @@ window.reaccionAmen = async function(comentarioId){
 
     );
 
+    localStorage.setItem(
+        clave,
+        "true"
+    );
+
 };
 
 
 window.reaccionEdifico = async function(comentarioId){
+
+    const clave =
+    "edifico_" + comentarioId;
+
+    if(
+        localStorage.getItem(clave)
+    ){
+
+        alert(
+          "Ya reaccionaste con ❤️"
+        );
+
+        return;
+    }
 
     await updateDoc(
 
@@ -756,6 +789,11 @@ window.reaccionEdifico = async function(comentarioId){
             edifico: increment(1)
         }
 
+    );
+
+    localStorage.setItem(
+        clave,
+        "true"
     );
 
 };
