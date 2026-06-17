@@ -417,88 +417,28 @@ datos.usuarioId === miUsuario;
 
          
          const tarjeta = `
-
 <div style="
 display:flex;
 justify-content:${esMio ? "flex-end" : "flex-start"};
-margin-top:10px;
+margin:10px 0;
 ">
 
 <div style="
-width:fit-content;
-max-width:180px;
-word-wrap:break-word;
-overflow-wrap:break-word;
-white-space:pre-wrap;
-background:${esMio ? "#dbeafe" : "white"};
-padding:8px 10px;
+background:${esMio ? "#dbeafe" : "#ffffff"};
+padding:10px;
 border-radius:12px;
-box-shadow:0 1px 5px rgba(0,0,0,.08);
+max-width:220px;
 ">
 
-<div style="
-display:flex;
-align-items:center;
-gap:10px;
-">
+<b>${datos.nombre}</b><br>
+${datos.comentario}<br><br>
 
-<strong style="font-size:13px;">
-${datos.nombre}
-</strong>
-
-<small style="
-color:gray;
-font-size:10px;
-">
-${new Date(
-  datos.fecha
-).toLocaleTimeString()}
-</small>
-
-</div>
-
-<div style="margin-top:4px;">
-${datos.comentario}
-</div>
-
-<div style="
-display:flex;
-gap:6px;
-margin-top:4px;
-">
-
-<button
-onclick="reaccionAmen('${comentarioId}')"
-style="
-border:none;
-background:#eef2ff;
-padding:4px 8px;
-font-size:12px;
-border-radius:20px;
-cursor:pointer;
-">
-🙏 ${amen}
-</button>
-
-<button
-onclick="reaccionEdifico('${comentarioId}')"
-style="
-border:none;
-background:#fee2e2;
-padding:4px 8px;
-font-size:12px;
-border-radius:20px;
-cursor:pointer;
-">
-❤️ ${edifico}
-</button>
+<button>🙏 ${amen}</button>
+<button>❤️ ${edifico}</button>
 
 </div>
 
 </div>
-
-</div>
-
 `;
 
           contenedor.innerHTML +=
