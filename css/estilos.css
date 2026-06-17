@@ -389,7 +389,50 @@ font-size:12px;
 }
 
 
+/* ======================================
+   TEMA
+====================================== */
 
+.btn-volver{
+
+border:none;
+background:none;
+font-size:16px;
+color:#2563EB;
+cursor:pointer;
+
+margin-bottom:15px;
+
+}
+
+.titulo-tema{
+
+margin-bottom:20px;
+color:#1E3A8A;
+
+}
+
+.tema-detalle-card{
+
+background:white;
+
+padding:16px;
+
+margin-bottom:12px;
+
+border-radius:16px;
+
+box-shadow:0 1px 4px rgba(0,0,0,.08);
+
+}
+
+.tema-detalle-card h3{
+
+margin-top:0;
+
+color:#1E3A8A;
+
+}
 
 
 
