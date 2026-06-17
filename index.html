@@ -428,13 +428,48 @@ background:${esMio ? "#dbeafe" : "#ffffff"};
 padding:10px;
 border-radius:12px;
 max-width:220px;
+
+word-wrap:break-word;
+overflow-wrap:break-word;
+word-break:break-word;
 ">
 
 <b>${datos.nombre}</b><br>
-${datos.comentario}<br><br>
 
-<button>🙏 ${amen}</button>
-<button>❤️ ${edifico}</button>
+<small style="
+color:gray;
+font-size:11px;
+">
+${new Date(datos.fecha).toLocaleTimeString()}
+</small>
+
+<br>
+
+${datos.comentario}
+
+<button
+onclick="reaccionAmen('${comentarioId}')"
+style="
+border:none;
+background:#eef2ff;
+padding:4px 8px;
+border-radius:20px;
+cursor:pointer;
+">
+🙏 ${amen}
+</button>
+
+<button
+onclick="reaccionEdifico('${comentarioId}')"
+style="
+border:none;
+background:#fee2e2;
+padding:4px 8px;
+border-radius:20px;
+cursor:pointer;
+">
+❤️ ${edifico}
+</button>
 
 </div>
 
