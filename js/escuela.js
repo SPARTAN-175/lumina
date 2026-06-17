@@ -1,3 +1,7 @@
+alert(
+  "escuela.js cargado"
+);
+
 let temasAbiertos = false;
 
 let contadorToques = 0;
