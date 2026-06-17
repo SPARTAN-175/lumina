@@ -426,7 +426,7 @@ margin-top:10px;
 
 <div style="
 width:fit-content;
-max-width:260px;
+max-width:180px;
 word-wrap:break-word;
 overflow-wrap:break-word;
 white-space:pre-wrap;
@@ -436,7 +436,11 @@ border-radius:12px;
 box-shadow:0 1px 5px rgba(0,0,0,.08);
 ">
 
-<div>
+<div style="
+display:flex;
+align-items:center;
+gap:10px;
+">
 
 <strong style="font-size:13px;">
 ${datos.nombre}
@@ -457,7 +461,11 @@ ${new Date(
 ${datos.comentario}
 </div>
 
-<div>
+<div style="
+display:flex;
+gap:6px;
+margin-top:4px;
+">
 
 <button
 onclick="reaccionAmen('${comentarioId}')"
