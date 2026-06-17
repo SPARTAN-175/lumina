@@ -1,7 +1,3 @@
-alert(
-  "escuela.js cargado"
-);
-
 let temasAbiertos = false;
 
 let contadorToques = 0;
@@ -10,12 +6,7 @@ window.toqueLogoEscuela = function(){
 
     contadorToques++;
 
-    alert(
-        "Toques: " +
-        contadorToques
-    );
-
-    if(contadorToques >= 5){
+      if(contadorToques >= 5){
 
         document
         .getElementById(
