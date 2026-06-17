@@ -4,6 +4,10 @@
    ESTILOS GENERALES
 ====================================== */
 
+*{
+    box-sizing:border-box;
+}
+
 body{
     font-family:'Inter',sans-serif;
     font-size:16px;
