@@ -54,3 +54,28 @@ window.toggleTemas = function(){
     }
 
 };
+
+window.publicarTema = function(){
+
+    alert(
+        "Tema publicado correctamente"
+    );
+
+    document
+    .getElementById(
+        "panelAdminEscuela"
+    )
+    .style.display = "none";
+
+};
+
+
+
+
+
+
+
+
+
+
+
