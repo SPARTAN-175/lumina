@@ -414,7 +414,7 @@ color:#1E3A8A;
 
 .tema-detalle-card{
 
-background:white;
+background:white !important;
 
 padding:16px;
 
@@ -434,7 +434,42 @@ color:#1E3A8A;
 
 }
 
+.cabecera-tema{
 
+display:flex;
+align-items:center;
+
+gap:10px;
+
+margin-bottom:20px;
+
+}
+
+.btn-volver{
+
+border:none;
+
+background:none;
+
+font-size:24px;
+
+color:#2563EB;
+
+cursor:pointer;
+
+padding:0;
+
+}
+
+.titulo-tema{
+
+margin:0;
+
+font-size:32px;
+
+color:#1E3A8A;
+
+}
 
 
 </style>
