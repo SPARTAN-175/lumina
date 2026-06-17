@@ -745,6 +745,18 @@ async function enviarComentarioRapido(){
 
   await publicarComentario();
 
+   setTimeout(() => {
+
+    const zona =
+    document.getElementById(
+        "zonaComentarios"
+    );
+
+    zona.scrollTop =
+    zona.scrollHeight;
+
+}, 200);
+
   document
   .getElementById(
     "textoComentarioRapido"
