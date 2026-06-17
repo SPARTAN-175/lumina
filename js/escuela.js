@@ -1,5 +1,26 @@
 let temasAbiertos = false;
 
+let contadorToques = 0;
+
+window.toqueLogoEscuela = function(){
+
+    contadorToques++;
+
+    if(contadorToques >= 5){
+
+        document
+        .getElementById(
+            "panelAdminEscuela"
+        )
+        .style.display = "block";
+
+        contadorToques = 0;
+
+    }
+
+};
+
+
 window.toggleTemas = function(){
 
     const contenedor =
