@@ -6,6 +6,11 @@ window.toqueLogoEscuela = function(){
 
     contadorToques++;
 
+    alert(
+        "Toques: " +
+        contadorToques
+    );
+
     if(contadorToques >= 5){
 
         document
@@ -19,7 +24,6 @@ window.toqueLogoEscuela = function(){
     }
 
 };
-
 
 window.toggleTemas = function(){
 
