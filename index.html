@@ -419,11 +419,13 @@ datos.usuarioId === miUsuario;
          const tarjeta = `
 
 <div style="
+display:flex;
+justify-content:${esMio ? "flex-end" : "flex-start"};
 margin-top:10px;
 ">
 
 <div style="
-display:inline-block;
+width:fit-content;
 max-width:260px;
 word-wrap:break-word;
 overflow-wrap:break-word;
