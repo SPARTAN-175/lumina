@@ -362,7 +362,10 @@ from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {
     getFirestore,
     collection,
-    addDoc
+    addDoc,
+    query,
+    orderBy,
+    onSnapshot
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
@@ -391,6 +394,10 @@ getFirestore(app);
 window.db = db;
 window.addDoc = addDoc;
 window.collection = collection;
+  
+window.query = query;
+window.orderBy = orderBy;
+window.onSnapshot = onSnapshot;
 
 console.log(
 "Firebase Escuela conectado"
