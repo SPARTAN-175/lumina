@@ -351,8 +351,13 @@ onSnapshot(
             const tema =
             docu.data();
 
+            const idTema =
+            docu.id;
+
             lista.innerHTML += `
-                <div class="tema-card">
+                <div class="tema-card"
+                 onclick=" window.location.href='tema.html?id=${idTema}'"
+                 style="cursor:pointer;">
 
                     <div class="tema-icono azul">
                         📖
