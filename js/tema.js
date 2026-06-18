@@ -3,15 +3,14 @@ new URLSearchParams(
 window.location.search
 );
 
-const tema =
-parametros.get("tema");
+const idTema =
+parametros.get("id");
 
 
 console.log(
-"Tema recibido:",
-tema
+"ID recibido:",
+idTema
 );
-
 
 
 
@@ -104,6 +103,15 @@ else if(tema === "oracion"){
     };
 
 }
+
+if(!temaActual){
+
+    console.log(
+        "Tema aún no cargado"
+    );
+
+}
+
 
 document.getElementById(
     "tituloTema"
