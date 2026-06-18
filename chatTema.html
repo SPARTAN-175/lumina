@@ -13,7 +13,7 @@ content="width=device-width, initial-scale=1.0">
 
 <link
 rel="stylesheet"
-href="css/estilos.css?v=3">
+href="css/estilos.css">
 
 </head>
 
@@ -21,65 +21,33 @@ href="css/estilos.css?v=3">
 
 <div class="container">
 
-<div class="cabecera-tema">
-
-<button
-onclick="history.back()"
-class="btn-volver">
-
-<
-
-</button>
-
-<h2 class="titulo-tema">
-
-Comentarios
-
+<h2>
+💬 Comentarios del tema
 </h2>
 
-</div>
-
-<div id="listaComentariosTema">
-
-<div class="tema-detalle-card">
-
-<strong>Carlos</strong>
-
-<p>
-Muy buen tema.
+<p id="idTemaActual">
+Cargando...
 </p>
 
 </div>
 
-<div class="tema-detalle-card">
+<script>
 
-<strong>María</strong>
+const parametros =
+new URLSearchParams(
+window.location.search
+);
 
-<p>
-Me ayudó mucho.
-</p>
+const idTema =
+parametros.get("id");
 
-</div>
+document.getElementById(
+"idTemaActual"
+).textContent =
+"ID del tema: " +
+idTema;
 
-</div>
-
-</div>
-
-<div id="barraComentarioTema">
-
-<input
-type="text"
-placeholder="Escribe un comentario...">
-
-<button>
-
-Enviar
-
-</button>
-
-</div>
-
-<script src="js/chatTema.js"></script>
+</script>
 
 </body>
 
