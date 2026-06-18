@@ -1,3 +1,21 @@
+const parametros =
+new URLSearchParams(
+window.location.search
+);
+
+const tema =
+parametros.get("tema");
+
+
+console.log(
+"Tema recibido:",
+tema
+);
+
+
+
+
+
 const temaActual = {
 
     titulo:
