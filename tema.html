@@ -141,6 +141,52 @@ los comentarios
 </div>
 
 
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+    getFirestore,
+    doc,
+    getDoc
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+
+  apiKey: "AIzaSyB_jJZdMdVIhy9OT8R9Z8XsbRTNCJpgtsY",
+
+  authDomain: "lumina-82c5e.firebaseapp.com",
+
+  projectId: "lumina-82c5e",
+
+  storageBucket: "lumina-82c5e.firebasestorage.app",
+
+  messagingSenderId: "941054906075",
+
+  appId: "1:941054906075:web:bd4e4741a9c3c87a5a86fe"
+
+};
+
+const app =
+initializeApp(firebaseConfig);
+
+const db =
+getFirestore(app);
+
+window.dbTema = db;
+window.docTema = doc;
+window.getDocTema = getDoc;
+
+console.log(
+    "Firebase Tema conectado"
+);
+
+</script>
+
+  
 <script src="js/tema.js"></script>
   
 </body>
