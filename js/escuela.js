@@ -143,7 +143,7 @@ window.publicarTema = async function(){
         "desc"
     )
 
-);*/
+);
 
     window.onSnapshot(
         consulta,
@@ -157,7 +157,7 @@ window.publicarTema = async function(){
         }
     );
 
-};
+};*/
 
 
 //cargarTemas();
