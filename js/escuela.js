@@ -129,10 +129,38 @@ window.publicarTema = async function(){
 
 
 
+window.cargarTemas = function(){
+
+    const consulta = query(
+
+        collection(
+            db,
+            "temas_escuela"
+        ),
+
+        orderBy(
+            "fecha",
+            "desc"
+        )
+
+    );
+
+    onSnapshot(
+        consulta,
+        (snapshot)=>{
+
+            console.log(
+                "Temas encontrados:",
+                snapshot.size
+            );
+
+        }
+    );
+
+};
 
 
-
-
+cargarTemas();
 
 
 
