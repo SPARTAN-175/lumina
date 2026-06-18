@@ -334,91 +334,59 @@ const consulta = query(
 
 );
 
-<div
-class="tema-card"
-onclick="
-window.location.href=
-'tema.html?tema=fe'
-"
-style="cursor:pointer;">
 
-<div class="tema-icono azul">
-📖
-</div>
+onSnapshot(
+    consulta,
+    (snapshot)=>{
 
-<div class="tema-info">
+        const lista =
+        document.getElementById(
+            "listaTemas"
+        );
 
-<div class="tema-cabecera">
+        lista.innerHTML = "";
 
-<h4>¿Qué es la fe?</h4>
+        snapshot.forEach((docu)=>{
 
-<small>16 Jun</small>
+            const tema =
+            docu.data();
 
-</div>
+            lista.innerHTML += `
+                <div class="tema-card">
 
-<p>Hebreos 11:1</p>
+                    <div class="tema-icono azul">
+                        📖
+                    </div>
 
-</div>
+                    <div class="tema-info">
 
-</div>
+                        <div class="tema-cabecera">
 
-<div
-class="tema-card"
-onclick="
-window.location.href=
-'tema.html?tema=jesus'
-"
-style="cursor:pointer;">
+                            <h4>${tema.titulo}</h4>
 
-<div class="tema-icono verde">
-✝️
-</div>
+                            <small>
+                                ${new Date(
+                                    tema.fecha
+                                ).toLocaleDateString()}
+                            </small>
 
-<div class="tema-info">
+                        </div>
 
-<div class="tema-cabecera">
+                        <p>
+                            ${tema.versiculo}
+                        </p>
 
-<h4>¿Quién es Jesús?</h4>
+                    </div>
 
-<small>15 Jun</small>
+                </div>
+            `;
 
-</div>
+        });
 
-<p>Juan 14:6</p>
-
-</div>
-
-</div>
+    }
+);
 
   
- <div
-class="tema-card"
-onclick="
-window.location.href=
-'tema.html?tema=oracion'
-"
-style="cursor:pointer;">
-
-<div class="tema-icono naranja">
-🙏
-</div>
-<div class="tema-info">
-
-<div class="tema-cabecera">
-
-<h4>La oración</h4>
-
-<small>14 Jun</small>
-
-</div>
-
-<p>Mateo 6</p>
-
-</div>
-
-</div>
-
-</div>
 
 </script>
 
