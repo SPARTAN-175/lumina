@@ -55,17 +55,74 @@ window.toggleTemas = function(){
 
 };
 
-window.publicarTema = function(){
+window.publicarTema = async function(){
+
+    const titulo =
+    document.getElementById(
+        "tituloTema"
+    ).value.trim();
+
+    const versiculo =
+    document.getElementById(
+        "versiculoTema"
+    ).value.trim();
+
+    const textoVersiculo =
+    document.getElementById(
+        "textoVersiculoTema"
+    ).value.trim();
+
+    const resumen =
+    document.getElementById(
+        "resumenTema"
+    ).value.trim();
+
+    const actividad =
+    document.getElementById(
+        "actividadTema"
+    ).value.trim();
+
+    if(
+        !titulo ||
+        !versiculo ||
+        !textoVersiculo ||
+        !resumen ||
+        !actividad
+    ){
+
+        alert(
+            "Completa todos los campos"
+        );
+
+        return;
+
+    }
+
+    await addDoc(
+
+        collection(
+            db,
+            "temas_escuela"
+        ),
+
+        {
+            titulo,
+            versiculo,
+            textoVersiculo,
+            resumen,
+            actividad,
+            fecha: Date.now()
+        }
+
+    );
 
     alert(
         "Tema publicado correctamente"
     );
 
-    document
-    .getElementById(
+    document.getElementById(
         "panelAdminEscuela"
-    )
-    .style.display = "none";
+    ).style.display = "none";
 
 };
 
