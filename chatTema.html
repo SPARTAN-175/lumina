@@ -166,25 +166,6 @@ async function(){
     );
 
 
-   const consulta = query(
-
-    collection(
-        db,
-        "comentarios_temas"
-    ),
-
-    where(
-        "temaId",
-        "==",
-        idTema
-    ),
-
-    orderBy(
-        "fecha",
-        "asc"
-    )
-
-);
 
 onSnapshot(
     consulta,
@@ -239,6 +220,33 @@ ${comentario.comentario}
     ).value = "";
 
 };
+
+
+  const consulta = query(
+
+    collection(
+        db,
+        "comentarios_temas"
+    ),
+
+    where(
+        "temaId",
+        "==",
+        idTema
+    ),
+
+    orderBy(
+        "fecha",
+        "asc"
+    )
+
+);
+
+
+
+
+
+  
 
 </script>
 
