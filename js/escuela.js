@@ -129,7 +129,7 @@ window.publicarTema = async function(){
 
 
 
-window.cargarTemas = function(){
+/*window.cargarTemas = function(){
 
     const consulta = window.query(
 
@@ -143,7 +143,7 @@ window.cargarTemas = function(){
         "desc"
     )
 
-);
+);*/
 
     window.onSnapshot(
         consulta,
@@ -160,7 +160,27 @@ window.cargarTemas = function(){
 };
 
 
-cargarTemas();
+//cargarTemas();
+
+
+
+
+console.log(
+    "firebaseListo:",
+    window.firebaseListo
+);
+
+console.log(
+    "collection:",
+    typeof window.collection
+);
+
+console.log(
+    "query:",
+    typeof window.query
+);
+
+
 
 
 
