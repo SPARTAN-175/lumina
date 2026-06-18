@@ -124,6 +124,53 @@ console.log(
 "Firebase Chat Tema conectado"
 );
 
+
+
+  window.guardarComentarioTema =
+async function(){
+
+    const comentario =
+
+    document.getElementById(
+        "comentarioTema"
+    ).value.trim();
+
+    if(!comentario){
+
+        alert(
+            "Escribe un comentario"
+        );
+
+        return;
+
+    }
+
+    await addDoc(
+
+        collection(
+            db,
+            "comentarios_temas"
+        ),
+
+        {
+            temaId: idTema,
+            nombre: "Anónimo",
+            comentario,
+            fecha: Date.now()
+        }
+
+    );
+
+    alert(
+        "Comentario publicado"
+    );
+
+    document.getElementById(
+        "comentarioTema"
+    ).value = "";
+
+};
+
 </script>
 
 
