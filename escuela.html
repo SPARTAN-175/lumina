@@ -360,7 +360,9 @@ import { initializeApp }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
-    getFirestore
+    getFirestore,
+    collection,
+    addDoc
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
@@ -385,6 +387,10 @@ initializeApp(firebaseConfig);
 
 const db =
 getFirestore(app);
+
+window.db = db;
+window.addDoc = addDoc;
+window.collection = collection;
 
 console.log(
 "Firebase Escuela conectado"
