@@ -10,3 +10,62 @@ console.log(
     "ID recibido:",
     idTema
 );
+
+async function cargarTema(){
+
+    if(!idTema){
+        return;
+    }
+
+    const documento =
+    await getDocTema(
+
+        docTema(
+            dbTema,
+            "temas_escuela",
+            idTema
+        )
+
+    );
+
+    if(!documento.exists()){
+
+        console.log(
+            "Tema no encontrado"
+        );
+
+        return;
+
+    }
+
+    const tema =
+    documento.data();
+
+    document.getElementById(
+        "tituloTema"
+    ).textContent =
+    tema.titulo;
+
+    document.getElementById(
+        "referenciaVersiculo"
+    ).textContent =
+    tema.versiculo;
+
+    document.getElementById(
+        "textoVersiculo"
+    ).textContent =
+    tema.textoVersiculo;
+
+    document.getElementById(
+        "resumenTema"
+    ).textContent =
+    tema.resumen;
+
+    document.getElementById(
+        "actividadTema"
+    ).textContent =
+    tema.actividad;
+
+}
+
+cargarTema();
