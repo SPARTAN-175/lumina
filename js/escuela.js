@@ -131,21 +131,21 @@ window.publicarTema = async function(){
 
 window.cargarTemas = function(){
 
-    const consulta = query(
+    const consulta = window.query(
 
-        collection(
-            db,
-            "temas_escuela"
-        ),
+    window.collection(
+        window.db,
+        "temas_escuela"
+    ),
 
-        orderBy(
-            "fecha",
-            "desc"
-        )
+    window.orderBy(
+        "fecha",
+        "desc"
+    )
 
-    );
+);
 
-    onSnapshot(
+    window.onSnapshot(
         consulta,
         (snapshot)=>{
 
