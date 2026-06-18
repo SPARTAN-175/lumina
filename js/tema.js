@@ -11,22 +11,37 @@ console.log(
     idTema
 );
 
+console.log(
+    "dbTema:",
+    window.dbTema
+);
+
+console.log(
+    "getDocTema:",
+    window.getDocTema
+);
+
+console.log(
+    "docTema:",
+    window.docTema
+);
+
 async function cargarTema(){
 
     if(!idTema){
         return;
     }
 
-    const documento =
-    await getDocTema(
+   const documento =
+await window.getDocTema(
 
-        docTema(
-            dbTema,
-            "temas_escuela",
-            idTema
-        )
+    window.docTema(
+        window.dbTema,
+        "temas_escuela",
+        idTema
+    )
 
-    );
+);
 
     if(!documento.exists()){
 
