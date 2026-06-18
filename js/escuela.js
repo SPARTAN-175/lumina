@@ -165,20 +165,6 @@ window.publicarTema = async function(){
 
 
 
-console.log(
-    "firebaseListo:",
-    window.firebaseListo
-);
-
-console.log(
-    "collection:",
-    typeof window.collection
-);
-
-console.log(
-    "query:",
-    typeof window.query
-);
 
 
 
