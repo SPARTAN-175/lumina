@@ -404,6 +404,32 @@ console.log(
 "Firebase Escuela conectado"
 );
 
+const consulta = query(
+
+    collection(
+        db,
+        "temas_escuela"
+    ),
+
+    orderBy(
+        "fecha",
+        "desc"
+    )
+
+);
+
+onSnapshot(
+    consulta,
+    (snapshot)=>{
+
+        console.log(
+            "Temas encontrados:",
+            snapshot.size
+        );
+
+    }
+);
+
 </script>
 
 <script src="js/escuela.js?=v3"></script>
