@@ -197,6 +197,64 @@ console.log(
     idTema
 );
 
+
+    async function cargarTema(){
+
+    const documento =
+    await getDoc(
+
+        doc(
+            db,
+            "temas_escuela",
+            idTema
+        )
+
+    );
+
+    if(!documento.exists()){
+
+        console.log(
+            "Tema no encontrado"
+        );
+
+        return;
+
+    }
+
+    const tema =
+    documento.data();
+
+    console.log(tema);
+
+    document.getElementById(
+        "tituloTema"
+    ).textContent =
+    tema.titulo;
+
+    document.getElementById(
+        "referenciaVersiculo"
+    ).textContent =
+    tema.versiculo;
+
+    document.getElementById(
+        "textoVersiculo"
+    ).textContent =
+    tema.textoVersiculo;
+
+    document.getElementById(
+        "resumenTema"
+    ).textContent =
+    tema.resumen;
+
+    document.getElementById(
+        "actividadTema"
+    ).textContent =
+    tema.actividad;
+
+}
+
+cargarTema();
+
 </script>
 
   
