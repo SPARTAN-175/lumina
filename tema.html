@@ -103,10 +103,7 @@ necesitas fortalecer más?
 
 <div
 class="tema-detalle-card"
-onclick="
-window.location.href=
-'chatTema.html'
-"
+onclick="abrirChatTema()"
 style="cursor:pointer;">
 
 <h3>💬 Comentarios</h3>
@@ -254,6 +251,15 @@ console.log(
 }
 
 cargarTema();
+
+
+window.abrirChatTema = function(){
+
+    window.location.href =
+    "chatTema.html?id=" +
+    idTema;
+
+};
 
 </script>
 
