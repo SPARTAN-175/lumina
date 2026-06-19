@@ -305,22 +305,28 @@ box-shadow:
 0 1px 5px rgba(0,0,0,.1);
 ">
 
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:5px;
+">
+
 <b>
 ${comentario.nombre}
 </b>
 
-<br>
-
 <small style="
 color:gray;
 font-size:11px;
+margin-left:10px;
 ">
 ${new Date(
     comentario.fecha
 ).toLocaleTimeString()}
 </small>
 
-<br>
+</div>
 
 ${comentario.comentario}
 
