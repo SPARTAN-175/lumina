@@ -112,9 +112,9 @@ async function(){
 
     const comentario =
 
-    document.getElementById(
-        "comentarioTema"
-    ).value.trim();
+document.getElementById(
+    "textoComentarioRapido"
+).value.trim();
 
     if(!comentario){
 
@@ -200,6 +200,37 @@ let nombre =
 };
 
 
+
+window.enviarComentarioRapido =
+async function(){
+
+    document
+    .getElementById(
+        "comentarioTema"
+    )
+    .value =
+
+    document
+    .getElementById(
+        "textoComentarioRapido"
+    )
+    .value;
+
+    await guardarComentarioTema();
+
+    document
+    .getElementById(
+        "textoComentarioRapido"
+    )
+    .value = "";
+
+};
+
+
+
+
+  
+
   const consulta = query(
 
     collection(
@@ -274,41 +305,66 @@ ${comentario.comentario}
 
 
 
-  
+  window.autoExpandir = function(textarea){
+
+    textarea.style.height = "auto";
+
+    textarea.style.height =
+    textarea.scrollHeight + "px";
+
+};
 
 </script>
 
 
 
 
-<textarea
-id="comentarioTema"
-placeholder="Escribe un comentario..."
+<div
+id="barraComentario"
 style="
-width:100%;
-height:100px;
-padding:10px;
-margin-top:15px;
-box-sizing:border-box;
+position:fixed;
+bottom:10px;
+left:0;
+right:0;
+background:white;
+padding:6px 8px;
+box-shadow:0 -2px 10px rgba(0,0,0,.1);
+z-index:999;
+gap:8px;
+align-items:center;
+display:flex;
+">
+
+<textarea
+id="textoComentarioRapido"
+placeholder="Escribe tu opinión..."
+oninput="autoExpandir(this)"
+style="
+flex:1;
+min-height:34px;
+max-height:120px;
+padding:8px;
+border:1px solid #ccc;
+border-radius:24px;
+resize:none;
 ">
 </textarea>
 
 <button
-onclick="guardarComentarioTema()"
+onclick="enviarComentarioRapido()"
 style="
-width:100%;
-padding:12px;
-margin-top:10px;
+width:42px;
+height:34px;
 background:#2563EB;
 color:white;
 border:none;
 border-radius:10px;
 cursor:pointer;
 ">
-
-Publicar comentario
-
+➤
 </button>
+
+</div>
 
   
 </body>
