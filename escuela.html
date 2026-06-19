@@ -298,6 +298,12 @@ onSnapshot(
             "listaTemas"
         );
 
+      const mostrarTodos =
+
+localStorage.getItem(
+    "mostrarTodosTemas"
+) === "true";
+
       document.getElementById(
     "btnVerTemas"
 ).textContent =
@@ -310,11 +316,6 @@ mostrarTodos
 
         lista.innerHTML = "";
 
-       const mostrarTodos =
-
-localStorage.getItem(
-    "mostrarTodosTemas"
-) === "true";
       
       let contador = 0;
       
