@@ -434,16 +434,26 @@ overflow-wrap:break-word;
 word-break:break-word;
 ">
 
-<b>${datos.nombre}</b><br>
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:5px;
+">
+
+<b>
+${datos.nombre}
+</b>
 
 <small style="
 color:gray;
 font-size:11px;
 ">
-${new Date(datos.fecha).toLocaleTimeString()}
+${new Date(datos.fecha)
+.toLocaleTimeString()}
 </small>
 
-<br>
+</div>
 
 ${datos.comentario}
 
