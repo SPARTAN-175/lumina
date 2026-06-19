@@ -175,12 +175,13 @@ let nombre =
             "comentarios_temas"
         ),
 
-        {
-            temaId: idTema,
-            nombre,
-            comentario,
-            fecha: Date.now()
-        }
+      {
+    temaId: idTema,
+    usuarioId,
+    nombre,
+    comentario,
+    fecha: Date.now()
+      }
 
     );
 
@@ -272,18 +273,63 @@ onSnapshot(
             const comentario =
             docu.data();
 
+      
+             const miUsuario =
+            localStorage.getItem(
+                 "lumina_usuario"
+            );
+
+              const esMio =
+              comentario.usuarioId ===
+              miUsuario;
+          
+
             lista.innerHTML += `
 
+lista.innerHTML += `
+
 <div style="
-background:white;
+display:flex;
+justify-content:${
+esMio
+? "flex-end"
+: "flex-start"
+};
+margin:10px 0;
+">
+
+<div style="
+background:${
+esMio
+? "#dbeafe"
+: "#ffffff"
+};
+
 padding:10px;
-margin-bottom:10px;
-border-radius:10px;
-box-shadow:0 1px 5px rgba(0,0,0,.1);
+border-radius:12px;
+max-width:220px;
+
 word-wrap:break-word;
 overflow-wrap:break-word;
 word-break:break-word;
+
+box-shadow:
+0 1px 5px rgba(0,0,0,.1);
 ">
+
+<b>
+${comentario.nombre}
+</b>
+
+<br>
+
+${comentario.comentario}
+
+</div>
+
+</div>
+
+`;
 
 <strong>
 ${comentario.nombre}
