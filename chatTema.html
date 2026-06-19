@@ -167,48 +167,7 @@ async function(){
 
 
 
-onSnapshot(
-    consulta,
-    (snapshot)=>{
 
-        const lista =
-        document.getElementById(
-            "listaComentariosTema"
-        );
-
-        lista.innerHTML = "";
-
-        snapshot.forEach((docu)=>{
-
-            const comentario =
-            docu.data();
-
-            lista.innerHTML += `
-
-<div style="
-background:white;
-padding:10px;
-margin-bottom:10px;
-border-radius:10px;
-box-shadow:0 1px 5px rgba(0,0,0,.1);
-">
-
-<strong>
-${comentario.nombre}
-</strong>
-
-<p>
-${comentario.comentario}
-</p>
-
-</div>
-
-`;
-
-        });
-
-    }
-);
   
 
     alert(
