@@ -21,13 +21,11 @@ href="css/estilos.css">
 
 <div class="container">
 
-<h2>
-💬 Comentarios del tema
+<h2 id="tituloChatTema">
+💬 Comentarios
 </h2>
 
-<p id="idTemaActual">
-Cargando...
-</p>
+
 
 <div
 id="listaComentariosTema"
@@ -56,11 +54,7 @@ window.location.search
 const idTema =
 parametros.get("id");
 
-document.getElementById(
-"idTemaActual"
-).textContent =
-"ID del tema: " +
-idTema;
+
 
 </script>
 
@@ -189,12 +183,6 @@ let nombre =
 
 
 
-
-  
-
-    alert(
-        "Comentario publicado"
-    );
 
     document.getElementById(
     "textoComentarioRapido"
