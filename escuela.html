@@ -298,16 +298,35 @@ onSnapshot(
             "listaTemas"
         );
 
+      document.getElementById(
+    "btnVerTemas"
+).textContent =
+
+mostrarTodos
+
+? "Ocultar temas"
+
+: "Ver todos los temas";
+
         lista.innerHTML = "";
 
-        let contador = 0;
+       const mostrarTodos =
+
+localStorage.getItem(
+    "mostrarTodosTemas"
+) === "true";
+      
+      let contador = 0;
       
       snapshot.forEach((docu)=>{
 
 
         contador++;
 
-if(contador > 3){
+if(
+    !mostrarTodos &&
+    contador > 3
+){
 
     return;
 
