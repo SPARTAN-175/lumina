@@ -1,3 +1,5 @@
+window.mostrarTodos = false;
+
 let temasAbiertos = false;
 
 let contadorToques = 0;
@@ -22,36 +24,20 @@ window.toqueLogoEscuela = function(){
 
 window.toggleTemas = function(){
 
-    const contenedor =
-    document.getElementById(
-        "temasOcultos"
+    const estadoActual =
+    localStorage.getItem(
+        "mostrarTodosTemas"
+    ) === "true";
+
+    localStorage.setItem(
+
+        "mostrarTodosTemas",
+
+        !estadoActual
+
     );
 
-    const boton =
-    document.getElementById(
-        "btnVerTemas"
-    );
-
-    temasAbiertos =
-    !temasAbiertos;
-
-    if(temasAbiertos){
-
-        contenedor.style.display =
-        "block";
-
-        boton.textContent =
-        "Ocultar temas";
-
-    }else{
-
-        contenedor.style.display =
-        "none";
-
-        boton.textContent =
-        "Ver todos los temas";
-
-    }
+    location.reload();
 
 };
 
