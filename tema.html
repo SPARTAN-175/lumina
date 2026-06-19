@@ -154,7 +154,8 @@ import {
     query,
     where,
     orderBy,
-    getDocs
+    getDocs,
+    onSnapshot
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
@@ -279,69 +280,81 @@ async function cargarInfoComentarios(){
 
     );
 
-    const snapshot =
-    await getDocs(
-        consulta
-    );
+    onSnapshot(
+        consulta,
+        (snapshot)=>{
 
-    document.getElementById(
-        "tituloComentarios"
-    ).textContent =
-    "💬 Comentarios (" +
-    snapshot.size +
-    ")";
+            document.getElementById(
+                "tituloComentarios"
+            ).textContent =
+            "💬 Comentarios (" +
+            snapshot.size +
+            ")";
 
-    if(snapshot.empty){
+            if(snapshot.empty){
 
-        document.getElementById(
-            "ultimoComentarioAutor"
-        ).textContent =
-        "Sin comentarios";
+                document.getElementById(
+                    "ultimoComentarioAutor"
+                ).textContent =
+                "Sin comentarios";
 
-        document.getElementById(
-            "ultimoComentarioTexto"
-        ).textContent =
-        "Sé el primero en comentar";
+                document.getElementById(
+                    "ultimoComentarioTexto"
+                ).textContent =
+                "Sé el primero en comentar";
 
-        return;
+                return;
 
-    }
+            }
 
-    let ultimo =
-    null;
+            let ultimo = null;
 
-    snapshot.forEach((docu)=>{
+            snapshot.forEach((docu)=>{
 
-        const comentario =
-        docu.data();
+                const comentario =
+                docu.data();
 
-        if(
-            !ultimo ||
-            comentario.fecha >
-            ultimo.fecha
-        ){
+                if(
+                    !ultimo ||
+                    comentario.fecha >
+                    ultimo.fecha
+                ){
 
-            ultimo =
-            comentario;
+                    ultimo =
+                    comentario;
+
+                }
+
+            });
+
+            document.getElementById(
+                "ultimoComentarioAutor"
+            ).textContent =
+            ultimo.nombre;
+
+            let textoMostrar =
+            ultimo.comentario;
+
+            if(
+                textoMostrar.length > 70
+            ){
+
+                textoMostrar =
+                textoMostrar.substring(
+                    0,
+                    70
+                ) + "...";
+
+            }
+
+            document.getElementById(
+                "ultimoComentarioTexto"
+            ).textContent =
+            textoMostrar;
 
         }
 
-    });
-
-    document.getElementById(
-        "ultimoComentarioAutor"
-    ).textContent =
-    ultimo.nombre;
-
-    document.getElementById(
-    "ultimoComentarioTexto"
-).textContent =
-
-ultimo.comentario.length > 50
-
-? ultimo.comentario.substring(0,50) + "..."
-
-: ultimo.comentario;
+    );
 
 }
 
