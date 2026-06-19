@@ -29,42 +29,17 @@ href="css/estilos.css">
 Cargando...
 </p>
 
-
-<textarea
-id="comentarioTema"
-placeholder="Escribe un comentario..."
-style="
-width:100%;
-height:100px;
-padding:10px;
-margin-top:15px;
-box-sizing:border-box;
-">
-</textarea>
-
-<button
-onclick="guardarComentarioTema()"
-style="
-width:100%;
-padding:12px;
-margin-top:10px;
-background:#2563EB;
-color:white;
-border:none;
-border-radius:10px;
-cursor:pointer;
-">
-
-Publicar comentario
-
-</button>
-
 <div
 id="listaComentariosTema"
 style="
 margin-top:20px;
 ">
 </div>
+
+  
+
+
+
   
 
 </div>
@@ -103,7 +78,9 @@ import {
     query,
     where,
     orderBy,
-    onSnapshot
+    onSnapshot,
+    doc,
+    getDoc
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
@@ -149,7 +126,42 @@ async function(){
 
     }
 
-    await addDoc(
+    
+
+  const usuarioId =
+localStorage.getItem(
+    "lumina_usuario"
+);
+
+let nombre =
+"Anónimo";
+
+
+  
+  if(usuarioId){
+
+    const usuarioDoc =
+    await getDoc(
+
+        doc(
+            db,
+            "usuarios",
+            usuarioId
+        )
+
+    );
+
+    if(usuarioDoc.exists()){
+
+        nombre =
+        usuarioDoc.data().nombre;
+
+    }
+
+}
+  
+  
+  await addDoc(
 
         collection(
             db,
@@ -158,7 +170,7 @@ async function(){
 
         {
             temaId: idTema,
-            nombre: "Anónimo",
+            nombre,
             comentario,
             fecha: Date.now()
         }
@@ -230,6 +242,9 @@ padding:10px;
 margin-bottom:10px;
 border-radius:10px;
 box-shadow:0 1px 5px rgba(0,0,0,.1);
+word-wrap:break-word;
+overflow-wrap:break-word;
+word-break:break-word;
 ">
 
 <strong>
@@ -257,6 +272,36 @@ ${comentario.comentario}
 </script>
 
 
+
+
+<textarea
+id="comentarioTema"
+placeholder="Escribe un comentario..."
+style="
+width:100%;
+height:100px;
+padding:10px;
+margin-top:15px;
+box-sizing:border-box;
+">
+</textarea>
+
+<button
+onclick="guardarComentarioTema()"
+style="
+width:100%;
+padding:12px;
+margin-top:10px;
+background:#2563EB;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+">
+
+Publicar comentario
+
+</button>
 
   
 </body>
