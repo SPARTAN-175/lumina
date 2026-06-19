@@ -49,53 +49,7 @@ Aprendamos juntos de la Palabra de Dios
 
 
 
-<div id="temasOcultos" style="display:none;">
 
-<div class="tema-card">
-
-<div class="tema-icono azul">
-🕊️
-</div>
-
-<div class="tema-info">
-
-<div class="tema-cabecera">
-
-<h4>El Espíritu Santo</h4>
-
-<small>13 Jun</small>
-
-</div>
-
-<p>Juan 14:26</p>
-
-</div>
-
-</div>
-
-<div class="tema-card">
-
-<div class="tema-icono verde">
-❤️
-</div>
-
-<div class="tema-info">
-
-<div class="tema-cabecera">
-
-<h4>El amor de Dios</h4>
-
-<small>12 Jun</small>
-
-</div>
-
-<p>Juan 3:16</p>
-
-</div>
-
-</div>
-
-</div>
   
 
 <button
@@ -346,7 +300,18 @@ onSnapshot(
 
         lista.innerHTML = "";
 
-        snapshot.forEach((docu)=>{
+        let contador = 0;
+      
+      snapshot.forEach((docu)=>{
+
+
+        contador++;
+
+if(contador > 3){
+
+    return;
+
+}
 
             const tema =
             docu.data();
