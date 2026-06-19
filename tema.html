@@ -106,7 +106,9 @@ class="tema-detalle-card"
 onclick="abrirChatTema()"
 style="cursor:pointer;">
 
-<h3>💬 Comentarios</h3>
+<h3 id="tituloComentarios">
+💬 Comentarios (0)
+</h3>
 
 <strong
 id="ultimoComentarioAutor">
@@ -147,7 +149,12 @@ from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {
     getFirestore,
     doc,
-    getDoc
+    getDoc,
+    collection,
+    query,
+    where,
+    orderBy,
+    getDocs
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
@@ -251,6 +258,87 @@ console.log(
 }
 
 cargarTema();
+cargarInfoComentarios();
+
+    
+
+async function cargarInfoComentarios(){
+
+    const consulta = query(
+
+        collection(
+            db,
+            "comentarios_temas"
+        ),
+
+        where(
+            "temaId",
+            "==",
+            idTema
+        )
+
+    );
+
+    const snapshot =
+    await getDocs(
+        consulta
+    );
+
+    document.getElementById(
+        "tituloComentarios"
+    ).textContent =
+    "💬 Comentarios (" +
+    snapshot.size +
+    ")";
+
+    if(snapshot.empty){
+
+        document.getElementById(
+            "ultimoComentarioAutor"
+        ).textContent =
+        "Sin comentarios";
+
+        document.getElementById(
+            "ultimoComentarioTexto"
+        ).textContent =
+        "Sé el primero en comentar";
+
+        return;
+
+    }
+
+    let ultimo =
+    null;
+
+    snapshot.forEach((docu)=>{
+
+        const comentario =
+        docu.data();
+
+        if(
+            !ultimo ||
+            comentario.fecha >
+            ultimo.fecha
+        ){
+
+            ultimo =
+            comentario;
+
+        }
+
+    });
+
+    document.getElementById(
+        "ultimoComentarioAutor"
+    ).textContent =
+    ultimo.nombre;
+
+    document.getElementById(
+        "ultimoComentarioTexto"
+    ).textContent =
+    ultimo.comentario;
+
+}
 
 
 window.abrirChatTema = function(){
