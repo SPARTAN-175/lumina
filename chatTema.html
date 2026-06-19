@@ -33,7 +33,9 @@ Cargando...
 id="listaComentariosTema"
 style="
 margin-top:20px;
-">
+padding-bottom:100px;
+"
+>
 </div>
 
   
@@ -293,7 +295,7 @@ esMio
 
 padding:10px;
 border-radius:12px;
-max-width:220px;
+max-width:300px;
 
 word-wrap:break-word;
 overflow-wrap:break-word;
@@ -309,6 +311,17 @@ ${comentario.nombre}
 
 <br>
 
+<small style="
+color:gray;
+font-size:11px;
+">
+${new Date(
+    comentario.fecha
+).toLocaleTimeString()}
+</small>
+
+<br>
+
 ${comentario.comentario}
 
 </div>
@@ -318,6 +331,11 @@ ${comentario.comentario}
 `; 
 
         });
+
+      window.scrollTo(
+    0,
+    document.body.scrollHeight
+);
 
     }
 );
