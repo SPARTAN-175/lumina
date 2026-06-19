@@ -24,7 +24,8 @@ window.toqueLogoEscuela = function(){
 
 window.toggleTemas = function(){
 
-    const estadoActual =
+    const mostrarTodos =
+
     localStorage.getItem(
         "mostrarTodosTemas"
     ) === "true";
@@ -33,13 +34,14 @@ window.toggleTemas = function(){
 
         "mostrarTodosTemas",
 
-        !estadoActual
+        !mostrarTodos
 
     );
 
     location.reload();
 
 };
+
 
 window.publicarTema = async function(){
 
