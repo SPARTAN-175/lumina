@@ -195,8 +195,8 @@ let nombre =
     );
 
     document.getElementById(
-        "comentarioTema"
-    ).value = "";
+    "textoComentarioRapido"
+).value = "";
 
 };
 
@@ -204,18 +204,6 @@ let nombre =
 
 window.enviarComentarioRapido =
 async function(){
-
-    document
-    .getElementById(
-        "comentarioTema"
-    )
-    .value =
-
-    document
-    .getElementById(
-        "textoComentarioRapido"
-    )
-    .value;
 
     await guardarComentarioTema();
 
@@ -284,9 +272,7 @@ onSnapshot(
               miUsuario;
           
 
-            lista.innerHTML += `
-
-lista.innerHTML += `
+           lista.innerHTML += `
 
 <div style="
 display:flex;
@@ -329,19 +315,7 @@ ${comentario.comentario}
 
 </div>
 
-`;
-
-<strong>
-${comentario.nombre}
-</strong>
-
-<p>
-${comentario.comentario}
-</p>
-
-</div>
-
-`;
+`; 
 
         });
 
