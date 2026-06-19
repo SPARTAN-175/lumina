@@ -229,6 +229,7 @@ async function(){
     )
 
 );
+  let cantidadAnterior = 0;
 
 onSnapshot(
     consulta,
@@ -324,12 +325,26 @@ ${comentario.comentario}
 
 `; 
 
-        });
+        }
+                        if(
+    cantidadAnterior > 0 &&
+    snapshot.size > cantidadAnterior
+){
 
-      window.scrollTo(
-    0,
-    document.body.scrollHeight
-);
+    document
+    .getElementById(
+        "nuevoComentarioTema"
+    )
+    .style.display = "block";
+
+}
+
+cantidadAnterior =
+snapshot.size;
+                        
+                        );
+
+      
 
     }
 );
@@ -343,6 +358,25 @@ ${comentario.comentario}
 
     textarea.style.height =
     textarea.scrollHeight + "px";
+
+};
+
+window.irUltimoComentarioTema = function(){
+
+    window.scrollTo({
+
+        top:
+        document.body.scrollHeight,
+
+        behavior:"smooth"
+
+    });
+
+    document
+    .getElementById(
+        "nuevoComentarioTema"
+    )
+    .style.display = "none";
 
 };
 
@@ -397,6 +431,29 @@ cursor:pointer;
 </button>
 
 </div>
+
+
+<div
+id="nuevoComentarioTema"
+onclick="irUltimoComentarioTema()"
+style="
+display:none;
+position:fixed;
+bottom:80px;
+right:20px;
+background:#2563EB;
+color:white;
+padding:10px 15px;
+border-radius:25px;
+cursor:pointer;
+box-shadow:0 2px 10px rgba(0,0,0,.2);
+z-index:9999;
+">
+
+💬 Nuevo comentario
+
+</div>
+
 
   
 </body>
