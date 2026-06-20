@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Oración</title>
+
+<link
+rel="stylesheet"
+href="css/estilos.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>
+🙏 Peticiones de Oración
+</h2>
+
+<div
+id="listaPeticiones"
+style="
+padding-bottom:140px;
+">
+</div>
+
+<div
+id="formularioPeticion"
+style="
+display:none;
+background:#f8fafc;
+padding:15px;
+border-radius:12px;
+margin-top:15px;
+border:1px solid #e5e7eb;
+">
+
+<textarea
+id="textoPeticion"
+placeholder="Escribe tu petición de oración..."
+style="
+width:100%;
+min-height:120px;
+padding:12px;
+border:1px solid #ccc;
+border-radius:10px;
+box-sizing:border-box;
+resize:vertical;
+">
+</textarea>
+
+<button
+onclick="guardarPeticion()"
+style="
+width:100%;
+padding:12px;
+margin-top:10px;
+background:#dc2626;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold;
+">
+
+Publicar petición
+
+</button>
+
+</div>
+
+</div>
+
+<button
+id="btnNuevaPeticion"
+onclick="mostrarFormularioPeticion()"
+style="
+position:fixed;
+bottom:80px;
+left:15px;
+right:15px;
+
+padding:14px;
+
+background:#dc2626;
+color:white;
+
+border:none;
+border-radius:15px;
+
+font-size:16px;
+font-weight:bold;
+
+cursor:pointer;
+
+box-shadow:
+0 2px 10px rgba(0,0,0,.2);
+
+z-index:999;
+">
+
+❤️ Nueva petición
+
+</button>
+
+<div id="menuInferior">
+
+<button
+onclick="window.location.href='index.html'">
+
+🏠 <br>
+Inicio
+
+</button>
+
+<button
+onclick="window.location.href='escuela.html'">
+
+📚 <br>
+Escuela
+
+</button>
+
+<button>
+
+🙏 <br>
+Oración
+
+</button>
+
+<button>
+
+🤝 <br>
+Ayuda
+
+</button>
+
+<button>
+
+👤 <br>
+Perfil
+
+</button>
+
+</div>
+
+</body>
+
+</html>
