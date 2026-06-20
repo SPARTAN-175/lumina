@@ -337,16 +337,26 @@ async function(idPeticion){
 window.cerrarPeticion =
 async function(idPeticion){
 
-    await updateDoc(
+    mostrarConfirmacion(
 
-        doc(
-            db,
-            "peticiones_oracion",
-            idPeticion
-        ),
+        "¿Deseas marcar esta petición como respondida?",
 
-        {
-            activa:false
+        async function(){
+
+            await updateDoc(
+
+                doc(
+                    db,
+                    "peticiones_oracion",
+                    idPeticion
+                ),
+
+                {
+                    activa:false
+                }
+
+            );
+
         }
 
     );
@@ -386,6 +396,14 @@ onSnapshot(
             const datos =
             docu.data();
 
+            const miUsuario =
+localStorage.getItem(
+    "lumina_usuario"
+);
+
+const soyDueno =
+datos.usuarioId ===
+miUsuario;
 
             if(!datos.activa){
 
@@ -489,6 +507,8 @@ personas orando
 
 <br>
 
+${soyDueno ? `
+
 <button
 onclick="cerrarPeticion('${docu.id}')"
 style="
@@ -506,6 +526,8 @@ font-size:12px;
 
 </button>
 
+` : ""}
+
 </div>
 
 </div>
@@ -519,13 +541,134 @@ font-size:12px;
     }
 );
 
+window.mostrarConfirmacion =
+function(texto, accion){
+
+    document
+    .getElementById(
+        "textoConfirmacion"
+    )
+    .textContent =
+    texto;
+
+    document
+    .getElementById(
+        "modalConfirmacion"
+    )
+    .style.display =
+    "flex";
+
+    document
+    .getElementById(
+        "btnAceptarConfirmacion"
+    )
+    .onclick =
+    function(){
+
+        cerrarModalConfirmacion();
+
+        accion();
+
+    };
+
+};
+
+window.cerrarModalConfirmacion =
+function(){
+
+    document
+    .getElementById(
+        "modalConfirmacion"
+    )
+    .style.display =
+    "none";
+
+};
+
+
+
+
+    
 </script>
 
 
 
 
 
+<div
+id="modalConfirmacion"
+style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+right:0;
+bottom:0;
+background:rgba(0,0,0,.5);
+z-index:99999;
+justify-content:center;
+align-items:center;
+">
 
+<div style="
+background:white;
+padding:20px;
+border-radius:15px;
+width:90%;
+max-width:350px;
+text-align:center;
+">
+
+<h3>
+🙏 Confirmación
+</h3>
+
+<p id="textoConfirmacion">
+¿Deseas continuar?
+</p>
+
+<div style="
+display:flex;
+gap:10px;
+margin-top:20px;
+">
+
+<button
+onclick="cerrarModalConfirmacion()"
+style="
+flex:1;
+padding:10px;
+border:none;
+border-radius:10px;
+background:#e5e7eb;
+cursor:pointer;
+">
+
+Cancelar
+
+</button>
+
+<button
+id="btnAceptarConfirmacion"
+style="
+flex:1;
+padding:10px;
+border:none;
+border-radius:10px;
+background:#16a34a;
+color:white;
+cursor:pointer;
+">
+
+Aceptar
+
+</button>
+
+</div>
+
+</div>
+
+</div>
 
 
   
