@@ -130,21 +130,27 @@ Escuela
 
 </button>
 
-<button>
+<button
+style="
+color:#dc2626;
+font-weight:bold;
+">
 
 🙏 <br>
 Oración
 
 </button>
 
-<button>
+<button
+onclick="proximamente()">
 
 🤝 <br>
 Ayuda
 
 </button>
 
-<button>
+<button
+onclick="proximamente()">
 
 👤 <br>
 Perfil
@@ -152,7 +158,6 @@ Perfil
 </button>
 
 </div>
-
 
 
 
@@ -671,6 +676,25 @@ Aceptar
 </div>
 
 
+
+<script>
+
+window.proximamente =
+function(){
+
+    mostrarConfirmacion(
+
+        "Esta sección estará disponible próximamente.",
+
+        function(){}
+
+    );
+
+};
+
+</script>
+
+    
   
 </body>
 
