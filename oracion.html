@@ -381,11 +381,32 @@ ${datos.nombre}
 
 <p style="
 margin:8px 0;
-max-height:60px;
+
+display:-webkit-box;
+-webkit-line-clamp:5;
+-webkit-box-orient:vertical;
+
 overflow:hidden;
+
+line-height:1.4;
 ">
 ${datos.peticion}
 </p>
+
+<small
+onclick="
+this.previousElementSibling.style.display='block';
+this.style.display='none';
+"
+style="
+color:#2563EB;
+cursor:pointer;
+font-weight:bold;
+">
+
+Ver más
+
+</small>
 
 <div style="
 display:flex;
