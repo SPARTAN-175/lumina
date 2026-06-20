@@ -334,6 +334,28 @@ async function(idPeticion){
 
 };
 
+window.cerrarPeticion =
+async function(idPeticion){
+
+    await updateDoc(
+
+        doc(
+            db,
+            "peticiones_oracion",
+            idPeticion
+        ),
+
+        {
+            activa:false
+        }
+
+    );
+
+};
+
+
+    
+
 const consulta = query(
 
     collection(
@@ -364,6 +386,13 @@ onSnapshot(
             const datos =
             docu.data();
 
+
+            if(!datos.activa){
+
+             return;
+
+            }
+            
             const peticionCorta =
 datos.peticion.length < 180;
 
@@ -457,6 +486,25 @@ margin-top:3px;
 
 ${datos.orando || 0}
 personas orando
+
+<br>
+
+<button
+onclick="cerrarPeticion('${docu.id}')"
+style="
+margin-top:8px;
+border:none;
+background:#dcfce7;
+color:#166534;
+padding:6px 10px;
+border-radius:10px;
+cursor:pointer;
+font-size:12px;
+">
+
+✅ Marcar respondida
+
+</button>
 
 </div>
 
