@@ -153,6 +153,295 @@ Perfil
 
 </div>
 
+
+
+
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    query,
+    orderBy,
+    onSnapshot,
+    doc,
+    getDoc,
+    updateDoc,
+    increment
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+
+  apiKey: "TU_API_KEY",
+  authDomain: "lumina-82c5e.firebaseapp.com",
+  projectId: "lumina-82c5e",
+  storageBucket: "lumina-82c5e.firebasestorage.app",
+  messagingSenderId: "941054906075",
+  appId: "1:941054906075:web:bd4e4741a9c3c87a5a86fe"
+
+};
+
+const app =
+initializeApp(firebaseConfig);
+
+const db =
+getFirestore(app);
+
+window.mostrarFormularioPeticion =
+function(){
+
+    document
+    .getElementById(
+        "formularioPeticion"
+    )
+    .style.display =
+    "block";
+
+};
+
+window.guardarPeticion =
+async function(){
+
+    const peticion =
+
+    document
+    .getElementById(
+        "textoPeticion"
+    )
+    .value
+    .trim();
+
+    if(!peticion){
+
+        return;
+
+    }
+
+    const usuarioId =
+    localStorage.getItem(
+        "lumina_usuario"
+    );
+
+    if(!usuarioId){
+
+        alert(
+        "Primero comenta en Reflexión Diaria para registrar tu nombre."
+        );
+
+        return;
+
+    }
+
+    const usuarioDoc =
+    await getDoc(
+
+        doc(
+            db,
+            "usuarios",
+            usuarioId
+        )
+
+    );
+
+    if(!usuarioDoc.exists()){
+
+        alert(
+        "Usuario no encontrado."
+        );
+
+        return;
+
+    }
+
+    const nombre =
+    usuarioDoc.data().nombre;
+
+    await addDoc(
+
+        collection(
+            db,
+            "peticiones_oracion"
+        ),
+
+        {
+            usuarioId,
+            nombre,
+            peticion,
+            fecha: Date.now(),
+            orando: 0,
+            activa: true
+        }
+
+    );
+
+    document
+    .getElementById(
+        "textoPeticion"
+    )
+    .value = "";
+
+    document
+    .getElementById(
+        "formularioPeticion"
+    )
+    .style.display =
+    "none";
+
+};
+
+window.estoyOrando =
+async function(idPeticion){
+
+    const clave =
+    "orando_" +
+    idPeticion;
+
+    if(
+        localStorage.getItem(
+            clave
+        )
+    ){
+
+        return;
+
+    }
+
+    await updateDoc(
+
+        doc(
+            db,
+            "peticiones_oracion",
+            idPeticion
+        ),
+
+        {
+            orando:
+            increment(1)
+        }
+
+    );
+
+    localStorage.setItem(
+        clave,
+        "true"
+    );
+
+};
+
+const consulta = query(
+
+    collection(
+        db,
+        "peticiones_oracion"
+    ),
+
+    orderBy(
+        "fecha",
+        "desc"
+    )
+
+);
+
+onSnapshot(
+    consulta,
+    (snapshot)=>{
+
+        const lista =
+        document.getElementById(
+            "listaPeticiones"
+        );
+
+        lista.innerHTML = "";
+
+        snapshot.forEach((docu)=>{
+
+            const datos =
+            docu.data();
+
+            lista.innerHTML += `
+
+<div style="
+background:white;
+padding:15px;
+margin-bottom:15px;
+border-radius:15px;
+box-shadow:
+0 2px 8px rgba(0,0,0,.08);
+">
+
+<b>
+${datos.nombre}
+</b>
+
+<p>
+${datos.peticion}
+</p>
+
+<small style="
+color:gray;
+">
+${new Date(
+    datos.fecha
+).toLocaleString()}
+</small>
+
+<div style="
+margin-top:10px;
+text-align:right;
+">
+
+<button
+onclick="estoyOrando('${docu.id}')"
+style="
+border:none;
+background:#fee2e2;
+padding:8px 12px;
+border-radius:20px;
+cursor:pointer;
+">
+
+🙏 Estoy orando
+
+</button>
+
+<div style="
+margin-top:6px;
+font-size:12px;
+color:#666;
+">
+
+${datos.orando || 0}
+personas orando
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+        });
+
+    }
+);
+
+</script>
+
+
+
+
+
+
+
+
+  
 </body>
 
 </html>
