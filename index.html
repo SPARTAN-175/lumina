@@ -655,13 +655,32 @@ async function publicarComentario(){
 
   }else{
 
-      const usuarioDoc =
-        await getDoc(
-          doc(db,"usuarios",usuarioId)
-        );
+     const usuarioDoc =
+await getDoc(
+    doc(db,"usuarios",usuarioId)
+);
 
-      nombre =
-        usuarioDoc.data().nombre;
+if(!usuarioDoc.exists()){
+
+    localStorage.removeItem(
+        "lumina_usuario"
+    );
+
+    alert(
+        "Necesitamos registrar tu nombre nuevamente."
+    );
+
+    document
+    .getElementById(
+        "nombreComentario"
+    )
+    .style.display = "block";
+
+    return;
+}
+
+nombre =
+usuarioDoc.data().nombre;
 
      document
 .getElementById("usuarioActual")
