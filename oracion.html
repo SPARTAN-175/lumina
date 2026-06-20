@@ -364,6 +364,9 @@ onSnapshot(
             const datos =
             docu.data();
 
+            const peticionCorta =
+datos.peticion.length < 180;
+
             lista.innerHTML += `
 
 <div style="
@@ -380,7 +383,9 @@ ${datos.nombre}
 </b>
 
 <p style="
-margin:8px 0;
+margin:6px 0;
+font-size:14px;
+color:#374151;
 
 display:-webkit-box;
 -webkit-line-clamp:5;
@@ -393,6 +398,7 @@ line-height:1.4;
 ${datos.peticion}
 </p>
 
+${!peticionCorta ? `
 <small
 onclick="
 this.previousElementSibling.style.display='block';
@@ -402,11 +408,11 @@ style="
 color:#2563EB;
 cursor:pointer;
 font-weight:bold;
+font-size:12px;
 ">
-
 Ver más
-
 </small>
+` : ""}
 
 <div style="
 display:flex;
